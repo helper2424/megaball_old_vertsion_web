@@ -1,0 +1,30 @@
+@import "../utils"
+
+.user-control
+  margin: 100px auto 0 auto
+  position: relative
+
+  .cell.corner
+    @include cell_params(auto, 10px, 50px, 50px)
+    right: -20px
+
+  .cell.controls
+    @include cell_params(31px, 65px, 600px, 220px)
+
+    .node
+      margin: 2px 0
+      float: left
+      width: 299px
+
+      .title
+        width: 90px
+        font-size: 20px
+        float: left
+        color: #333
+        padding: 0 15px
+
+  .cell.buttons
+    @include cell_params(40px, 325px, 580px, 40px)
+    text-align: center
+    .button
+      margin-right: 40px

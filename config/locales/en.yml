@@ -1,0 +1,76 @@
+en:
+  unity_not_installed: 'Unity Player is not installed!'
+  download: 'download'
+
+  hello: "Hello world"
+  incorrect_invite: "Sorry, incorrect invite"
+  incorrect_signature: "Incorrect signature"
+
+  help_friend: "Your friend asks for energy!"
+
+  zero_charged: "Can't use item without charges"
+
+  uploading: "Uploading"
+  click_to_select_file: "Click to select file:"
+  upload_file: "UPLOAD FILE"
+  select_file: "SELECT FILE"
+  upload_button: "UPLOAD"
+  cancel_button: "CANCEL"
+
+  unity_instruction: "unity_instruction_en.png"
+
+  club_already_exists: "Club with same name already exists"
+
+  coin:
+    zero: "coins"
+    one: "coin"
+    few: "coins"
+    other: "coins"
+
+  star:
+    zero: "stars"
+    one: "star"
+    few: "stars"
+    other: "stars"
+
+  coin_accusative:
+    zero: "coins"
+    one: "coin"
+    few: "coins"
+    other: "coins"
+
+  star_accusative:
+    zero: "stars"
+    one: "star"
+    few: "stars"
+    other: "stars"
+
+  vote:
+    zero: "votes"
+    one: "vote"
+    few: "votes"
+    other: "votes"
+
+  ruble:
+    zero: "rubles"
+    one: "ruble"
+    few: "rubles"
+    other: "rubles"
+
+  mailik:
+    zero: "mailiks"
+    one: "mailik"
+    few: "mailiks"
+    other: "mailiks"
+
+  ok:
+    zero: "oks"
+    one: "ok"
+    few: "oks"
+    other: "oks"
+
+  dollar:
+    zero: "dollars"
+    one: "dollar"
+    few: "dollars"
+    other: "dollars"

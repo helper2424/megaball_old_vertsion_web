@@ -1,0 +1,54 @@
+@import "../utils"
+
+.layout.train
+
+  .cell.table-header
+    $height: 20px
+    @include cell_params(40px, 78px, 390px, $height)
+    .header
+      float: left
+      line-height: $height
+      cursor: pointer
+      text-align: center
+      &:nth-child(odd)
+        @include debug_bg(#fff)
+      &:nth-child(even)
+        @include debug_bg(#0f0)
+
+  .cell.table-body
+    $height: 15px
+    @include cell_params(40px, 114px, 410px, 165px)
+    font: 11px verdana
+    .tr
+      margin: 1px 0
+      width: 100%
+      height: $height
+      overflow: hidden
+      cursor: pointer
+      &:hover, &.active
+        .td
+          color: #fff
+          background: rgb(155, 202, 55)
+      .td
+        line-height: $height
+        float: left
+        text-align: center
+        &:nth-child(odd)
+          @include debug_bg(#fff)
+        &:nth-child(even)
+          @include debug_bg(#0f0)
+
+  .cell.update
+    @include cell_params(80px, 305px, 145px, 35px)
+
+  .cell.start
+    @include cell_params(265px, 305px, 135px, 35px)
+
+  .cell.filters
+    @include cell_params(585px, 25px, 148px, 250px)
+    & > div
+      margin-bottom: 16px
+
+  .cell.create
+    @include cell_params(505px, 305px, 203px, 35px)
+    text-align: center

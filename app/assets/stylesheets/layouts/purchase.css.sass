@@ -1,0 +1,59 @@
+@import "../utils"
+@import "../animations"
+
+.purchase
+  position: relative
+  margin: 200px auto 0 auto
+
+  .cell.flow
+    @include cell_params(30px, 20px, 267px, 150px)
+    text-align: center
+    img
+      @include rotation_animation_state()
+      height: 100%
+
+  .cell.title
+    @include cell_params(30px, 20px, 267px, 150px)
+    text-align: center
+    font-size: 20px
+
+  .cell.picture
+    $height: 150px
+    @include cell_params(30px, 20px, 267px, $height)
+    text-align: center
+    line-height: $height
+    img
+      vertical-align: middle
+      max-width: 100%
+      max-height: 100%
+
+    .user-picture
+      margin: -15px auto auto 40px
+      text-align: left
+
+  .cell.description
+    @include cell_params(30px, 137px, 267px, 150px)
+    line-height: 13px
+    text-align: center
+
+  .cell.item
+    @include cell_params(30px, 20px, 267px, 150px)
+    text-align: center
+
+  .cell.close
+    @include cell_params(auto, -18px, 49px, 47px)
+    right: -18px
+
+  .cell.stars-zone
+    @include cell_params(30px, 203px, 120px, 58px)
+    text-align: center
+
+    .icon
+      margin-bottom: 5px
+
+  .cell.coins-zone
+    @include cell_params(178px, 203px, 120px, 58px)
+    text-align: center
+
+    .icon
+      margin-bottom: 5px

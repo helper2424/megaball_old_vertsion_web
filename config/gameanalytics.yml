@@ -1,0 +1,22 @@
+defaults: &defaults
+  game_key: ""
+  secret_key: ""
+  endpoint_url: "http://api.gameanalytics.com/1"
+  build: "0.1"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  game_key: ""
+  secret_key: ""
+
+release: &release
+  <<: *defaults
+  game_key: ""
+  secret_key: ""
+

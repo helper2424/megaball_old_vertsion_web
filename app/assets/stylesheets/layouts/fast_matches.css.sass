@@ -1,0 +1,80 @@
+@import "../utils"
+
+#fast_matches_block
+
+  .cell.tabs
+    @include cell_params(30px, 20px, 710px, 35px)
+    text-align: center
+
+#fast_matches_block .matches
+
+  .flow
+    @include cell_params(474px, 67px, 260px, 170px)
+    background: image-url("without_sprite/flow.png") center center no-repeat
+
+  .username
+    position: absolute
+    top: 75px
+    left: 520px
+    z-index: 5
+
+  .userpic
+    position: absolute
+    top: 90px
+    left: 540px
+
+  .item
+    display: table
+
+    span
+      display: table-cell
+      text-align: center
+      width: 24%
+
+      &.name
+        width: 28%
+
+  .cell.match-list-head
+    @include cell_params(40px, 67px, 395px, 25px)
+    span
+      font-size: 20px
+      cursor: pointer
+
+  .cell.match-list
+    @include cell_params(40px, 110px, 405px, 125px)
+    span
+      font: 12px arial
+    .item
+      width: 100%
+
+  .play-new
+    position: absolute
+    top: 260px
+    left: 270px
+
+  .do-refresh
+    position: absolute
+    top: 263px
+    left: 90px
+
+  .match-type
+    position: absolute
+    top: 310px
+    left: 85px
+    width: 140px
+
+  .groups
+    @include cell_params(480px, 255px, 250px, 90px)
+    text-align: center
+
+    .group-members
+      text-align: left
+      height: 100%
+
+    .create-group
+      margin-top: 30px
+
+  .placeinfo
+    @include cell_params(473px, 210px, 255px, 20px)
+    text-align: center
+    font-size: 20px

@@ -1,0 +1,28 @@
+ul.table
+  list-style: none
+  margin: 0
+  padding: 0
+
+  li
+    font: 11px verdana
+    height: 15px
+    line-height: 15px
+    white-space: nowrap
+    overflow: hidden
+    padding: 0 5px
+
+    &:nth-child(even)
+      background-image: image-url('without_sprite/white_cover.png')
+
+    span
+      vertical-align: top
+      display: inline-block
+
+      &.right
+        float: right
+
+      &.short
+        min-width: 20px
+        color: #666
+      &.long
+        min-width: 50px

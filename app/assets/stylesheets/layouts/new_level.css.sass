@@ -1,0 +1,36 @@
+@import "../utils"
+
+.layout.new-level
+  background: image-url('layouts/new_level.png')
+  width: 581px
+  height: 421px
+  margin: 60px auto 0 auto
+
+  .cell.corner
+    @include cell_params(auto, 130px, 50px, 50px)
+    right: -20px
+
+  .cell.buttons
+    @include cell_params(75px, 360px, 500px, 40px)
+    text-align: center
+
+    .button
+      margin-right: 50px
+
+  .cell.title
+    @include cell_params(170px, 100px, 235px, 60px)
+    text-align: center
+    font-size: 25px
+    line-height: 30px
+
+    & > span
+      font-size: 1.5em
+
+  .cell.prise
+    @include cell_params(40px, 200px, 500px, 40px)
+    text-align: center
+    font-size: 24px
+    color: #333
+
+    .youvegot
+      margin-right: 50px

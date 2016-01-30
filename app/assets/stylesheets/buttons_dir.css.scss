@@ -1,0 +1,653 @@
+/*
+
+        Creating a sprite from following images:
+        
+        app/assets/images/buttons/free-votes.button--hover.png (321x56)
+        app/assets/images/buttons/free-votes.button.png (321x56)
+        app/assets/images/buttons/free-votes.button--active.png (321x56)
+        app/assets/images/buttons/howtoplay.button.png (306x56)
+        app/assets/images/buttons/howtoplay.button--hover.png (306x56)
+        app/assets/images/buttons/howtoplay.button--active.png (306x56)
+        app/assets/images/buttons/play-button.button.png (251x55)
+        app/assets/images/buttons/play-button.button--hover.png (251x55)
+        app/assets/images/buttons/play-button.button.inactive.png (251x55)
+        app/assets/images/buttons/play-button.button--active.png (251x55)
+        app/assets/images/buttons/redsub.button.png (250x27)
+        app/assets/images/buttons/redsub.button--active.png (250x27)
+        app/assets/images/buttons/redsub.button--hover.png (250x27)
+        app/assets/images/buttons/gray.button--hover.png (229x27)
+        app/assets/images/buttons/gray.button--active.png (229x27)
+        app/assets/images/buttons/gray.button.png (229x27)
+        app/assets/images/buttons/gray.button.inactive.png (229x27)
+        app/assets/images/buttons/friend-action.button--hover.png (188x30)
+        app/assets/images/buttons/friend-action.button.png (188x30)
+        app/assets/images/buttons/friend-action.button--active.png (188x30)
+        app/assets/images/buttons/picker.button.png (142x32)
+        app/assets/images/buttons/picker.button.active.png (142x32)
+        app/assets/images/buttons/votes.button--active.png (141x33)
+        app/assets/images/buttons/votes.button--hover.png (141x33)
+        app/assets/images/buttons/votes.button.png (141x33)
+        app/assets/images/buttons/play-new.png (113x81)
+        app/assets/images/buttons/play-new--active.png (113x81)
+        app/assets/images/buttons/play-new--hover.png (113x81)
+        app/assets/images/buttons/club-chat-send--hover.png (106x46)
+        app/assets/images/buttons/club-chat-send--active.png (106x46)
+        app/assets/images/buttons/club-chat-send.png (106x46)
+        app/assets/images/buttons/noclublogo.button--hover.png (95x101)
+        app/assets/images/buttons/noclublogo.button.png (95x101)
+        app/assets/images/buttons/vip.button.active.png (91x66)
+        app/assets/images/buttons/vip.button.png (91x66)
+        app/assets/images/buttons/dollar.button--active.png (71x42)
+        app/assets/images/buttons/dollar.button.png (71x42)
+        app/assets/images/buttons/dollar.button--hover.png (71x42)
+        app/assets/images/buttons/star.button--hover.png (67x42)
+        app/assets/images/buttons/star.button--active.png (67x42)
+        app/assets/images/buttons/star.button.png (67x42)
+        app/assets/images/buttons/noclublogo-small.button--hover.png (51x53)
+        app/assets/images/buttons/noclublogo-small.button.png (51x53)
+        app/assets/images/buttons/gold-close.button.png (49x48)
+        app/assets/images/buttons/gold-close.button--hover.png (49x48)
+        app/assets/images/buttons/gold-close.button--active.png (49x48)
+        app/assets/images/buttons/close.button--active.png (49x47)
+        app/assets/images/buttons/close.button--hover.png (49x47)
+        app/assets/images/buttons/close.button.png (49x47)
+        app/assets/images/buttons/ok-green.button--active.png (46x44)
+        app/assets/images/buttons/ok-green.button.png (46x44)
+        app/assets/images/buttons/ok-green.button--hover.png (46x44)
+        app/assets/images/buttons/any.button.png (42x40)
+        app/assets/images/buttons/profile.button--hover.png (42x40)
+        app/assets/images/buttons/any.button--hover.png (42x40)
+        app/assets/images/buttons/any.button--active.png (42x40)
+        app/assets/images/buttons/profile.button.png (42x40)
+        app/assets/images/buttons/profile.button--active.png (42x40)
+        app/assets/images/buttons/cross.button--active.png (41x40)
+        app/assets/images/buttons/cross.button.png (41x40)
+        app/assets/images/buttons/cross.button--hover.png (41x40)
+        app/assets/images/buttons/ok.button.png (41x40)
+        app/assets/images/buttons/ok.button--active.png (41x40)
+        app/assets/images/buttons/ok.button--hover.png (41x40)
+        app/assets/images/buttons/first.button.png (41x39)
+        app/assets/images/buttons/first.button--active.png (41x39)
+        app/assets/images/buttons/previous.button--active.png (41x39)
+        app/assets/images/buttons/previous.button--hover.png (41x39)
+        app/assets/images/buttons/next.button--active.png (41x39)
+        app/assets/images/buttons/next.button--hover.png (41x39)
+        app/assets/images/buttons/next.button.png (41x39)
+        app/assets/images/buttons/first.button--hover.png (41x39)
+        app/assets/images/buttons/previous.button.png (41x39)
+        app/assets/images/buttons/last.button--active.png (41x39)
+        app/assets/images/buttons/last.button.png (41x39)
+        app/assets/images/buttons/last.button--hover.png (41x39)
+        app/assets/images/buttons/energy--hover.png (34x41)
+        app/assets/images/buttons/energy.png (34x41)
+        app/assets/images/buttons/inactive__.energy.png (34x41)
+        app/assets/images/buttons/energy--active.png (34x41)
+        app/assets/images/buttons/red-cancel.button--active.png (36x36)
+        app/assets/images/buttons/red-cancel.button.png (36x36)
+        app/assets/images/buttons/red-cancel.button--hover.png (36x36)
+        app/assets/images/buttons/music.button--hover.png (34x32)
+        app/assets/images/buttons/buy-coin.button--active.png (34x32)
+        app/assets/images/buttons/red.button--active.png (34x32)
+        app/assets/images/buttons/gray-plus.button--active.png (34x32)
+        app/assets/images/buttons/gray-plus.button--hover.png (34x32)
+        app/assets/images/buttons/buy-coin.button--hover.png (34x32)
+        app/assets/images/buttons/plus.button--active.png (34x32)
+        app/assets/images/buttons/plus.button--hover.png (34x32)
+        app/assets/images/buttons/buy-coin.button.png (34x32)
+        app/assets/images/buttons/search.button.png (34x32)
+        app/assets/images/buttons/gray-plus.button.png (34x32)
+        app/assets/images/buttons/plus.button.png (34x32)
+        app/assets/images/buttons/red.button--hover.png (34x32)
+        app/assets/images/buttons/red.button.png (34x32)
+        app/assets/images/buttons/inactive__.matches.button.png (34x32)
+        app/assets/images/buttons/ratings-button.button--hover.png (34x32)
+        app/assets/images/buttons/active__.sound.button.png (34x32)
+        app/assets/images/buttons/inactive__.ratings-button.button.png (34x32)
+        app/assets/images/buttons/search.button--hover.png (34x32)
+        app/assets/images/buttons/search.button--active.png (34x32)
+        app/assets/images/buttons/sound.button.png (34x32)
+        app/assets/images/buttons/fullscreen.button--active.png (34x32)
+        app/assets/images/buttons/fullscreen.button--hover.png (34x32)
+        app/assets/images/buttons/fullscreen.button.png (34x32)
+        app/assets/images/buttons/left.button.png (34x32)
+        app/assets/images/buttons/left.button--hover.png (34x32)
+        app/assets/images/buttons/left.button--active.png (34x32)
+        app/assets/images/buttons/sound.button--hover.png (34x32)
+        app/assets/images/buttons/sound.button--active.png (34x32)
+        app/assets/images/buttons/active__.music.button.png (34x32)
+        app/assets/images/buttons/matches.button.png (34x32)
+        app/assets/images/buttons/matches.button--hover.png (34x32)
+        app/assets/images/buttons/matches.button--active.png (34x32)
+        app/assets/images/buttons/music.button.png (34x32)
+        app/assets/images/buttons/red.button.inactive.png (34x32)
+        app/assets/images/buttons/music.button--active.png (34x32)
+        app/assets/images/buttons/ratings-button.button.png (34x32)
+        app/assets/images/buttons/profilesm.button.png (34x32)
+        app/assets/images/buttons/profilesm.button--hover.png (34x32)
+        app/assets/images/buttons/update.button.png (34x32)
+        app/assets/images/buttons/update.button--hover.png (34x32)
+        app/assets/images/buttons/active__.fullscreen.button.png (34x32)
+        app/assets/images/buttons/update.button--active.png (34x32)
+        app/assets/images/buttons/ratings-button.button--active.png (34x32)
+        app/assets/images/buttons/profilesm.button--active.png (34x32)
+        app/assets/images/buttons/control-settings.button.png (34x32)
+        app/assets/images/buttons/control-settings.button--hover.png (34x32)
+        app/assets/images/buttons/control-settings.button--active.png (34x32)
+        app/assets/images/buttons/control-settings.button.active.png (34x32)
+        app/assets/images/buttons/online.button.in_game.png (34x32)
+        app/assets/images/buttons/okay.button--hover.png (34x32)
+        app/assets/images/buttons/okay.button--active.png (34x32)
+        app/assets/images/buttons/online.button.png (34x32)
+        app/assets/images/buttons/online.button.active.png (34x32)
+        app/assets/images/buttons/okay.button.png (34x32)
+        app/assets/images/buttons/inactive__.buy.button.png (33x32)
+        app/assets/images/buttons/right.button--active.png (33x32)
+        app/assets/images/buttons/right.button--hover.png (33x32)
+        app/assets/images/buttons/right.button.png (33x32)
+        app/assets/images/buttons/store-left.button--active.png (33x32)
+        app/assets/images/buttons/store-right.button.png (33x32)
+        app/assets/images/buttons/store-right.button--hover.png (33x32)
+        app/assets/images/buttons/buy.button.png (33x32)
+        app/assets/images/buttons/buy.button--hover.png (33x32)
+        app/assets/images/buttons/buy.button--active.png (33x32)
+        app/assets/images/buttons/store-left.button.png (33x32)
+        app/assets/images/buttons/store-right.button--active.png (33x32)
+        app/assets/images/buttons/store-left.button--hover.png (33x32)
+        app/assets/images/buttons/buy-star.button--active.png (32x32)
+        app/assets/images/buttons/buy-star.button--hover.png (32x32)
+        app/assets/images/buttons/buy-star.button.png (32x32)
+        app/assets/images/buttons/friend-action.button__before--hover.png (6x30)
+        app/assets/images/buttons/friend-action.button__before--active.png (6x30)
+        app/assets/images/buttons/friend-action.button__before.png (6x30)
+        app/assets/images/buttons/friend-action.button__after--active.png (5x30)
+        app/assets/images/buttons/friend-action.button__after.png (5x30)
+        app/assets/images/buttons/friend-action.button__after--hover.png (5x30)
+        app/assets/images/buttons/clothes-button.button.png (27x21)
+        app/assets/images/buttons/faces-button.button.png (27x21)
+        app/assets/images/buttons/progress-button.button.png (27x21)
+        app/assets/images/buttons/active__.mail-button.button.png (27x21)
+        app/assets/images/buttons/home-button.button.png (27x21)
+        app/assets/images/buttons/rate-button.button.png (27x21)
+        app/assets/images/buttons/store-icon.button.inactive.png (27x21)
+        app/assets/images/buttons/active__.sales-button.button.png (27x21)
+        app/assets/images/buttons/inactive__.mail-button.button.png (27x21)
+        app/assets/images/buttons/inactive__.progress-button.button.png (27x21)
+        app/assets/images/buttons/inactive__.rate-button.button.png (27x21)
+        app/assets/images/buttons/inactive__.settings-button.button.png (27x21)
+        app/assets/images/buttons/active__.home-button.button.png (27x21)
+        app/assets/images/buttons/bottles-button.button.png (27x21)
+        app/assets/images/buttons/store-icon.button.active.png (27x21)
+        app/assets/images/buttons/store-icon.button.png (27x21)
+        app/assets/images/buttons/active__.progress-button.button.png (27x21)
+        app/assets/images/buttons/active__.faces-button.button.png (27x21)
+        app/assets/images/buttons/active__.clothes-button.button.png (27x21)
+        app/assets/images/buttons/active__.bottles-button.button.png (27x21)
+        app/assets/images/buttons/sales-button.button.png (27x21)
+        app/assets/images/buttons/active__.rate-button.button.png (27x21)
+        app/assets/images/buttons/active__.skills-button.button.png (27x21)
+        app/assets/images/buttons/active__.shorts-button.button.png (27x21)
+        app/assets/images/buttons/sets-button.button.png (27x21)
+        app/assets/images/buttons/settings-button.button.png (27x21)
+        app/assets/images/buttons/shoes-button.button.png (27x21)
+        app/assets/images/buttons/shorts-button.button.png (27x21)
+        app/assets/images/buttons/skills-button.button.png (27x21)
+        app/assets/images/buttons/active__.sets-button.button.png (27x21)
+        app/assets/images/buttons/active__.shoes-button.button.png (27x21)
+        app/assets/images/buttons/active__.settings-button.button.png (27x21)
+        app/assets/images/buttons/mail-button.button.png (27x20)
+        app/assets/images/buttons/gray.button__after--hover.png (11x27)
+        app/assets/images/buttons/gray.button.inactive__after.png (11x27)
+        app/assets/images/buttons/redsub.button__after--active.png (11x27)
+        app/assets/images/buttons/redsub.button__after--hover.png (11x27)
+        app/assets/images/buttons/redsub.button__after.png (11x27)
+        app/assets/images/buttons/gray.button__after.png (11x27)
+        app/assets/images/buttons/gray.button__after--active.png (11x27)
+        app/assets/images/buttons/accept.button.png (23x23)
+        app/assets/images/buttons/cancel.button.png (22x23)
+        app/assets/images/buttons/edit.button.png (23x22)
+        app/assets/images/buttons/dot.button.active.png (21x21)
+        app/assets/images/buttons/dot.button.png (21x21)
+        app/assets/images/buttons/small-plus.button.png (14x16)
+        app/assets/images/buttons/accept-nobox.button.png (14x14)
+        app/assets/images/buttons/accept-nobox.button--hover.png (14x14)
+        app/assets/images/buttons/lock.button.png (13x14)
+        app/assets/images/buttons/lock.button--hover.png (13x14)
+        app/assets/images/buttons/append.button.png (13x13)
+        app/assets/images/buttons/kick.button--hover.png (13x13)
+        app/assets/images/buttons/kick.button.png (13x13)
+
+        Output files:
+          app/assets/images/buttons.png
+          app/assets/stylesheets/buttons_dir.css.scss
+
+        Output size:
+          827x786
+
+
+*/
+.kick.button {
+ width: 17px; height: 17px; background: image-url('buttons.png') -580px -331px no-repeat }
+.free-votes.button {
+ width: 325px; height: 60px; background: image-url('buttons.png') 0px -60px no-repeat }
+.append.button {
+ width: 17px; height: 17px; background: image-url('buttons.png') -728px -517px no-repeat }
+.howtoplay.button {
+ width: 310px; height: 60px; background: image-url('buttons.png') 0px -180px no-repeat }
+.lock.button {
+ width: 17px; height: 18px; background: image-url('buttons.png') -728px -425px no-repeat }
+.accept-nobox.button {
+ width: 18px; height: 18px; background: image-url('buttons.png') -710px -471px no-repeat }
+.play-button.button {
+ width: 255px; height: 59px; background: image-url('buttons.png') -325px -60px no-repeat }
+.small-plus.button {
+ width: 18px; height: 20px; background: image-url('buttons.png') -710px -425px no-repeat }
+.dot.button {
+ width: 25px; height: 25px; background: image-url('buttons.png') -586px -362px no-repeat }
+.dot.button.active {
+ width: 25px; height: 25px; background: image-url('buttons.png') -561px -362px no-repeat }
+.redsub.button {
+ width: 254px; height: 31px; background: image-url('buttons.png') 0px -300px no-repeat }
+.edit.button {
+ width: 27px; height: 26px; background: image-url('buttons.png') -534px -362px no-repeat }
+.cancel.button {
+ width: 26px; height: 27px; background: image-url('buttons.png') -508px -362px no-repeat }
+.accept.button {
+ width: 27px; height: 27px; background: image-url('buttons.png') -481px -362px no-repeat }
+.gray.button:after {
+ width: 15px; height: 31px; background: image-url('buttons.png') -310px -240px no-repeat }
+.gray.button {
+ width: 233px; height: 31px; background: image-url('buttons.png') -233px -362px no-repeat }
+.redsub.button:after {
+ width: 15px; height: 31px; background: image-url('buttons.png') -310px -180px no-repeat }
+.mail-button.button {
+ width: 31px; height: 24px; background: image-url('buttons.png') -549px -331px no-repeat }
+.friend-action.button {
+ width: 192px; height: 34px; background: image-url('buttons.png') -192px -424px no-repeat }
+.active .settings-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -518px -331px no-repeat }
+.picker.button {
+ width: 146px; height: 36px; background: image-url('buttons.png') 0px -458px no-repeat }
+.picker.button.active {
+ width: 146px; height: 36px; background: image-url('buttons.png') -146px -458px no-repeat }
+.active .shoes-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -487px -331px no-repeat }
+.active .sets-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -601px -300px no-repeat }
+.votes.button {
+ width: 145px; height: 37px; background: image-url('buttons.png') -290px -494px no-repeat }
+.play-new {
+ width: 117px; height: 85px; background: image-url('buttons.png') 0px -531px no-repeat }
+.skills-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -570px -300px no-repeat }
+.shorts-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -539px -300px no-repeat }
+.shoes-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -508px -300px no-repeat }
+.settings-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -697px -584px no-repeat }
+.club-chat-send {
+ width: 110px; height: 50px; background: image-url('buttons.png') -635px 0px no-repeat }
+.fullscreen.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -587px -494px no-repeat }
+.noclublogo.button {
+ width: 99px; height: 105px; background: image-url('buttons.png') -635px -155px no-repeat }
+.vip.button.active {
+ width: 95px; height: 70px; background: image-url('buttons.png') -635px -260px no-repeat }
+.vip.button {
+ width: 95px; height: 70px; background: image-url('buttons.png') -635px -330px no-repeat }
+.active .shorts-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -635px -584px no-repeat }
+.dollar.button {
+ width: 75px; height: 46px; background: image-url('buttons.png') -635px -446px no-repeat }
+.active .skills-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -710px -492px no-repeat }
+.active .rate-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -710px -446px no-repeat }
+.sales-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -710px -400px no-repeat }
+.star.button {
+ width: 71px; height: 46px; background: image-url('buttons.png') -71px -616px no-repeat }
+.active .bottles-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -759px no-repeat }
+.noclublogo-small.button {
+ width: 55px; height: 57px; background: image-url('buttons.png') -580px -119px no-repeat }
+.gold-close.button {
+ width: 53px; height: 52px; background: image-url('buttons.png') -580px -178px no-repeat }
+.active .clothes-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -734px no-repeat }
+.active .faces-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -709px no-repeat }
+.active .progress-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -684px no-repeat }
+.store-icon.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -659px no-repeat }
+.close.button {
+ width: 53px; height: 51px; background: image-url('buttons.png') -159px -662px no-repeat }
+.store-icon.button.active {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -634px no-repeat }
+.ok-green.button {
+ width: 50px; height: 48px; background: image-url('buttons.png') -212px -662px no-repeat }
+.bottles-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -609px no-repeat }
+.any.button {
+ width: 46px; height: 44px; background: image-url('buttons.png') -142px -616px no-repeat }
+.active .home-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -584px no-repeat }
+.inactive .settings-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -559px no-repeat }
+.inactive .rate-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -534px no-repeat }
+.profile.button {
+ width: 46px; height: 44px; background: image-url('buttons.png') -326px -616px no-repeat }
+.inactive .progress-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -509px no-repeat }
+.inactive .mail-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -484px no-repeat }
+.cross.button {
+ width: 45px; height: 44px; background: image-url('buttons.png') -463px -616px no-repeat }
+.active .sales-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -459px no-repeat }
+.ok.button {
+ width: 45px; height: 44px; background: image-url('buttons.png') -553px -616px no-repeat }
+.rate-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -409px no-repeat }
+.home-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -384px no-repeat }
+.first.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -688px -616px no-repeat }
+.active .mail-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -359px no-repeat }
+.progress-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -334px no-repeat }
+.faces-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -309px no-repeat }
+.clothes-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -284px no-repeat }
+.friend-action.button:after {
+ width: 9px; height: 34px; background: image-url('buttons.png') -799px -250px no-repeat }
+.next.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -537px -662px no-repeat }
+.friend-action.button:before {
+ width: 10px; height: 34px; background: image-url('buttons.png') -810px -216px no-repeat }
+.previous.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -627px -662px no-repeat }
+.buy-star.button {
+ width: 36px; height: 36px; background: image-url('buttons.png') -790px -180px no-repeat }
+.last.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -745px 0px no-repeat }
+.store-left.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -790px 0px no-repeat }
+.buy.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -677px -750px no-repeat }
+.energy {
+ width: 38px; height: 45px; background: image-url('buttons.png') -745px -131px no-repeat }
+.inactive .energy {
+ width: 38px; height: 45px; background: image-url('buttons.png') -745px -176px no-repeat }
+.store-right.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -603px -750px no-repeat }
+.right.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -529px -750px no-repeat }
+.red-cancel.button {
+ width: 40px; height: 40px; background: image-url('buttons.png') -745px -306px no-repeat }
+.inactive .buy.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -418px -750px no-repeat }
+.okay.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -380px -750px no-repeat }
+.online.button.active {
+ width: 38px; height: 36px; background: image-url('buttons.png') -342px -750px no-repeat }
+.online.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -304px -750px no-repeat }
+.online.button.in_game {
+ width: 38px; height: 36px; background: image-url('buttons.png') -190px -750px no-repeat }
+.control-settings.button.active {
+ width: 38px; height: 36px; background: image-url('buttons.png') -152px -750px no-repeat }
+.control-settings.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -38px -750px no-repeat }
+.active .fullscreen.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -646px -714px no-repeat }
+.update.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -570px -714px no-repeat }
+.buy-coin.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -674px no-repeat }
+.search.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -706px -538px no-repeat }
+.gray-plus.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -292px -458px no-repeat }
+.plus.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -330px -458px no-repeat }
+.profilesm.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -494px -714px no-repeat }
+.red.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -406px -458px no-repeat }
+.inactive .matches.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -444px -458px no-repeat }
+.ratings-button.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -456px -714px no-repeat }
+.active .sound.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -520px -458px no-repeat }
+.inactive .ratings-button.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -558px -458px no-repeat }
+.music.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -342px -714px no-repeat }
+.matches.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -228px -714px no-repeat }
+.sound.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -473px -494px no-repeat }
+.active .music.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -190px -714px no-repeat }
+.left.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') 0px -714px no-repeat }
+.sets-button.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -666px -584px no-repeat }
+.fullscreen.button:hover, .button:hover .fullscreen.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -549px -494px no-repeat }
+.left.button:hover, .button:hover .left.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -38px -714px no-repeat }
+.free-votes.button:hover, .button:hover .free-votes.button {
+ width: 325px; height: 60px; background: image-url('buttons.png') 0px 0px no-repeat }
+.sound.button:hover, .button:hover .sound.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -114px -714px no-repeat }
+.kick.button:hover, .button:hover .kick.button {
+ width: 17px; height: 17px; background: image-url('buttons.png') -728px -584px no-repeat }
+.lock.button:hover, .button:hover .lock.button {
+ width: 17px; height: 18px; background: image-url('buttons.png') -728px -471px no-repeat }
+.howtoplay.button:hover, .button:hover .howtoplay.button {
+ width: 310px; height: 60px; background: image-url('buttons.png') 0px -240px no-repeat }
+.matches.button:hover, .button:hover .matches.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -266px -714px no-repeat }
+.accept-nobox.button:hover, .button:hover .accept-nobox.button {
+ width: 18px; height: 18px; background: image-url('buttons.png') -710px -517px no-repeat }
+.search.button:hover, .button:hover .search.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -596px -458px no-repeat }
+.play-button.button:hover, .button:hover .play-button.button {
+ width: 255px; height: 59px; background: image-url('buttons.png') -325px -119px no-repeat }
+.redsub.button:hover, .button:hover .redsub.button {
+ width: 254px; height: 31px; background: image-url('buttons.png') 0px -331px no-repeat }
+.ratings-button.button:hover, .button:hover .ratings-button.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -482px -458px no-repeat }
+.red.button:hover, .button:hover .red.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -368px -458px no-repeat }
+.profilesm.button:hover, .button:hover .profilesm.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -532px -714px no-repeat }
+.plus.button:hover, .button:hover .plus.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -638px no-repeat }
+.update.button:hover, .button:hover .update.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -608px -714px no-repeat }
+.gray.button:hover, .button:hover .gray.button {
+ width: 233px; height: 31px; background: image-url('buttons.png') -254px -331px no-repeat }
+.redsub.button:hover:after, .button:hover .redsub.button:after {
+ width: 15px; height: 31px; background: image-url('buttons.png') -730px -361px no-repeat }
+.gray.button:hover:after, .button:hover .gray.button:after {
+ width: 15px; height: 31px; background: image-url('buttons.png') -730px -260px no-repeat }
+.friend-action.button:hover, .button:hover .friend-action.button {
+ width: 192px; height: 34px; background: image-url('buttons.png') 0px -424px no-repeat }
+.buy-coin.button:hover, .button:hover .buy-coin.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -566px no-repeat }
+.control-settings.button:hover, .button:hover .control-settings.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -76px -750px no-repeat }
+.votes.button:hover, .button:hover .votes.button {
+ width: 145px; height: 37px; background: image-url('buttons.png') -145px -494px no-repeat }
+.gray-plus.button:hover, .button:hover .gray-plus.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -530px no-repeat }
+.play-new:hover, .button:hover .play-new {
+ width: 117px; height: 85px; background: image-url('buttons.png') -234px -531px no-repeat }
+.friend-action.button:hover:after, .button:hover .friend-action.button:after {
+ width: 9px; height: 34px; background: image-url('buttons.png') -808px -250px no-repeat }
+.club-chat-send:hover, .button:hover .club-chat-send {
+ width: 110px; height: 50px; background: image-url('buttons.png') -351px -531px no-repeat }
+.noclublogo.button:hover, .button:hover .noclublogo.button {
+ width: 99px; height: 105px; background: image-url('buttons.png') -635px -50px no-repeat }
+.dollar.button:hover, .button:hover .dollar.button {
+ width: 75px; height: 46px; background: image-url('buttons.png') -635px -492px no-repeat }
+.music.button:hover, .button:hover .music.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -386px no-repeat }
+.red-cancel.button:hover, .button:hover .red-cancel.button {
+ width: 40px; height: 40px; background: image-url('buttons.png') -745px -346px no-repeat }
+.star.button:hover, .button:hover .star.button {
+ width: 71px; height: 46px; background: image-url('buttons.png') -635px -538px no-repeat }
+.right.button:hover, .button:hover .right.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -492px -750px no-repeat }
+.noclublogo-small.button:hover, .button:hover .noclublogo-small.button {
+ width: 55px; height: 57px; background: image-url('buttons.png') -580px -60px no-repeat }
+.gold-close.button:hover, .button:hover .gold-close.button {
+ width: 53px; height: 52px; background: image-url('buttons.png') -580px -237px no-repeat }
+.close.button:hover, .button:hover .close.button {
+ width: 53px; height: 51px; background: image-url('buttons.png') -106px -662px no-repeat }
+.store-right.button:hover, .button:hover .store-right.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -640px -750px no-repeat }
+.energy:hover, .button:hover .energy {
+ width: 38px; height: 45px; background: image-url('buttons.png') -745px -86px no-repeat }
+.buy.button:hover, .button:hover .buy.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -714px -750px no-repeat }
+.ok-green.button:hover, .button:hover .ok-green.button {
+ width: 50px; height: 48px; background: image-url('buttons.png') -262px -662px no-repeat }
+.last.button:hover, .button:hover .last.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -745px -43px no-repeat }
+.profile.button:hover, .button:hover .profile.button {
+ width: 46px; height: 44px; background: image-url('buttons.png') -188px -616px no-repeat }
+.store-left.button:hover, .button:hover .store-left.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -790px -72px no-repeat }
+.any.button:hover, .button:hover .any.button {
+ width: 46px; height: 44px; background: image-url('buttons.png') -234px -616px no-repeat }
+.buy-star.button:hover, .button:hover .buy-star.button {
+ width: 36px; height: 36px; background: image-url('buttons.png') -790px -144px no-repeat }
+.cross.button:hover, .button:hover .cross.button {
+ width: 45px; height: 44px; background: image-url('buttons.png') -508px -616px no-repeat }
+.friend-action.button:hover:before, .button:hover .friend-action.button:before {
+ width: 10px; height: 34px; background: image-url('buttons.png') -790px -216px no-repeat }
+.ok.button:hover, .button:hover .ok.button {
+ width: 45px; height: 44px; background: image-url('buttons.png') -643px -616px no-repeat }
+.first.button:hover, .button:hover .first.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -582px -662px no-repeat }
+.previous.button:hover, .button:hover .previous.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -402px -662px no-repeat }
+.next.button:hover, .button:hover .next.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -492px -662px no-repeat }
+.okay.button:hover, .button:hover .okay.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -228px -750px no-repeat }
+.next.button:active, .next.button.inactive, .button:active .next.button, .button.inactive .next.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -447px -662px no-repeat }
+.friend-action.button:active:after, .friend-action.button.inactive:after, .button:active .friend-action.button:after, .button.inactive .friend-action.button:after {
+ width: 9px; height: 34px; background: image-url('buttons.png') -790px -250px no-repeat }
+.previous.button:active, .previous.button.inactive, .button:active .previous.button, .button.inactive .previous.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -357px -662px no-repeat }
+.first.button:active, .first.button.inactive, .button:active .first.button, .button.inactive .first.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -312px -662px no-repeat }
+.friend-action.button:active:before, .friend-action.button.inactive:before, .button:active .friend-action.button:before, .button.inactive .friend-action.button:before {
+ width: 10px; height: 34px; background: image-url('buttons.png') -800px -216px no-repeat }
+.ok.button:active, .ok.button.inactive, .button:active .ok.button, .button.inactive .ok.button {
+ width: 45px; height: 44px; background: image-url('buttons.png') -598px -616px no-repeat }
+.left.button:active, .left.button.inactive, .button:active .left.button, .button.inactive .left.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -76px -714px no-repeat }
+.last.button:active, .last.button.inactive, .button:active .last.button, .button.inactive .last.button {
+ width: 45px; height: 43px; background: image-url('buttons.png') -672px -662px no-repeat }
+.cross.button:active, .cross.button.inactive, .button:active .cross.button, .button.inactive .cross.button {
+ width: 45px; height: 44px; background: image-url('buttons.png') -418px -616px no-repeat }
+.profile.button:active, .profile.button.inactive, .button:active .profile.button, .button.inactive .profile.button {
+ width: 46px; height: 44px; background: image-url('buttons.png') -372px -616px no-repeat }
+.any.button:active, .any.button.inactive, .button:active .any.button, .button.inactive .any.button {
+ width: 46px; height: 44px; background: image-url('buttons.png') -280px -616px no-repeat }
+.buy-star.button:active, .buy-star.button.inactive, .button:active .buy-star.button, .button.inactive .buy-star.button {
+ width: 36px; height: 36px; background: image-url('buttons.png') -790px -108px no-repeat }
+.store-right.button:active, .store-right.button.inactive, .button:active .store-right.button, .button.inactive .store-right.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -790px -36px no-repeat }
+.buy.button:active, .buy.button.inactive, .button:active .buy.button, .button.inactive .buy.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -751px -750px no-repeat }
+.ok-green.button:active, .ok-green.button.inactive, .button:active .ok-green.button, .button.inactive .ok-green.button {
+ width: 50px; height: 48px; background: image-url('buttons.png') -571px -531px no-repeat }
+.energy:active, .energy.inactive, .button:active .energy, .button.inactive .energy {
+ width: 38px; height: 45px; background: image-url('buttons.png') -745px -221px no-repeat }
+.close.button:active, .close.button.inactive, .button:active .close.button, .button.inactive .close.button {
+ width: 53px; height: 51px; background: image-url('buttons.png') -53px -662px no-repeat }
+.gold-close.button:active, .gold-close.button.inactive, .button:active .gold-close.button, .button.inactive .gold-close.button {
+ width: 53px; height: 52px; background: image-url('buttons.png') 0px -662px no-repeat }
+.store-left.button:active, .store-left.button.inactive, .button:active .store-left.button, .button.inactive .store-left.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -566px -750px no-repeat }
+.red-cancel.button:active, .red-cancel.button.inactive, .button:active .red-cancel.button, .button.inactive .red-cancel.button {
+ width: 40px; height: 40px; background: image-url('buttons.png') -745px -266px no-repeat }
+.star.button:active, .star.button.inactive, .button:active .star.button, .button.inactive .star.button {
+ width: 71px; height: 46px; background: image-url('buttons.png') 0px -616px no-repeat }
+.right.button:active, .right.button.inactive, .button:active .right.button, .button.inactive .right.button {
+ width: 37px; height: 36px; background: image-url('buttons.png') -455px -750px no-repeat }
+.buy-coin.button:active, .buy-coin.button.inactive, .button:active .buy-coin.button, .button.inactive .buy-coin.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -422px no-repeat }
+.dollar.button:active, .dollar.button.inactive, .button:active .dollar.button, .button.inactive .dollar.button {
+ width: 75px; height: 46px; background: image-url('buttons.png') -635px -400px no-repeat }
+.red.button:active, .red.button.inactive, .button:active .red.button, .button.inactive .red.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -458px no-repeat }
+.club-chat-send:active, .club-chat-send.inactive, .button:active .club-chat-send, .button.inactive .club-chat-send {
+ width: 110px; height: 50px; background: image-url('buttons.png') -461px -531px no-repeat }
+.matches.button:active, .matches.button.inactive, .button:active .matches.button, .button.inactive .matches.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -304px -714px no-repeat }
+.gray-plus.button:active, .gray-plus.button.inactive, .button:active .gray-plus.button, .button.inactive .gray-plus.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -494px no-repeat }
+.play-new:active, .play-new.inactive, .button:active .play-new, .button.inactive .play-new {
+ width: 117px; height: 85px; background: image-url('buttons.png') -117px -531px no-repeat }
+.control-settings.button:active, .control-settings.button.inactive, .button:active .control-settings.button, .button.inactive .control-settings.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -114px -750px no-repeat }
+.votes.button:active, .votes.button.inactive, .button:active .votes.button, .button.inactive .votes.button {
+ width: 145px; height: 37px; background: image-url('buttons.png') 0px -494px no-repeat }
+.friend-action.button:active, .friend-action.button.inactive, .button:active .friend-action.button, .button.inactive .friend-action.button {
+ width: 192px; height: 34px; background: image-url('buttons.png') -384px -424px no-repeat }
+.profilesm.button:active, .profilesm.button.inactive, .button:active .profilesm.button, .button.inactive .profilesm.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') 0px -750px no-repeat }
+.ratings-button.button:active, .ratings-button.button.inactive, .button:active .ratings-button.button, .button.inactive .ratings-button.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -722px -714px no-repeat }
+.sound.button:active, .sound.button.inactive, .button:active .sound.button, .button.inactive .sound.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -152px -714px no-repeat }
+.redsub.button:active:after, .redsub.button.inactive:after, .button:active .redsub.button:after, .button.inactive .redsub.button:after {
+ width: 15px; height: 31px; background: image-url('buttons.png') -730px -330px no-repeat }
+.update.button:active, .update.button.inactive, .button:active .update.button, .button.inactive .update.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -684px -714px no-repeat }
+.free-votes.button:active, .free-votes.button.inactive, .button:active .free-votes.button, .button.inactive .free-votes.button {
+ width: 325px; height: 60px; background: image-url('buttons.png') 0px -120px no-repeat }
+.gray.button:active, .gray.button.inactive, .button:active .gray.button, .button.inactive .gray.button {
+ width: 233px; height: 31px; background: image-url('buttons.png') 0px -362px no-repeat }
+.gray.button:active:after, .gray.button.inactive:after, .button:active .gray.button:after, .button.inactive .gray.button:after {
+ width: 15px; height: 31px; background: image-url('buttons.png') -466px -362px no-repeat }
+.plus.button:active, .plus.button.inactive, .button:active .plus.button, .button.inactive .plus.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -745px -602px no-repeat }
+.music.button:active, .music.button.inactive, .button:active .music.button, .button.inactive .music.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -418px -714px no-repeat }
+.redsub.button:active, .redsub.button.inactive, .button:active .redsub.button, .button.inactive .redsub.button {
+ width: 254px; height: 31px; background: image-url('buttons.png') -254px -300px no-repeat }
+.play-button.button:active, .play-button.button.inactive, .button:active .play-button.button, .button.inactive .play-button.button {
+ width: 255px; height: 59px; background: image-url('buttons.png') -325px -237px no-repeat }
+.fullscreen.button:active, .fullscreen.button.inactive, .button:active .fullscreen.button, .button.inactive .fullscreen.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -511px -494px no-repeat }
+.search.button:active, .search.button.inactive, .button:active .search.button, .button.inactive .search.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -435px -494px no-repeat }
+.howtoplay.button:active, .howtoplay.button.inactive, .button:active .howtoplay.button, .button.inactive .howtoplay.button {
+ width: 310px; height: 60px; background: image-url('buttons.png') -325px 0px no-repeat }
+.okay.button:active, .okay.button.inactive, .button:active .okay.button, .button.inactive .okay.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -266px -750px no-repeat }
+.red.button.inactive, .button.inactive .red.button {
+ width: 38px; height: 36px; background: image-url('buttons.png') -380px -714px no-repeat !important }
+.play-button.button.inactive, .button.inactive .play-button.button {
+ width: 255px; height: 59px; background: image-url('buttons.png') -325px -178px no-repeat !important }
+.gray.button.inactive, .button.inactive .gray.button {
+ width: 233px; height: 31px; background: image-url('buttons.png') 0px -393px no-repeat !important }
+.gray.button.inactive:after, .button.inactive .gray.button:after {
+ width: 15px; height: 31px; background: image-url('buttons.png') -730px -291px no-repeat !important }
+.store-icon.button.inactive, .button.inactive .store-icon.button {
+ width: 31px; height: 25px; background: image-url('buttons.png') -790px -434px no-repeat !important }

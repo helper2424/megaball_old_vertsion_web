@@ -1,0 +1,23 @@
+@import "../utils"
+
+.gift-layout
+  color: #444
+  position: relative
+  margin: 10px auto
+  left: -20px
+  text-align: center
+
+  .do-accept
+    position: relative
+    top: 406px
+    margin-left: 35px
+
+  .close
+    position: absolute
+    top: 140px
+    right: 25px
+
+  .cell.body
+    @include cell_params(100px, 200px, 500px, 200px)
+    font-size: 25px
+    line-height: 45px

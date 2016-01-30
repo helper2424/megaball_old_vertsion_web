@@ -1,0 +1,131 @@
+//= require signin_dir.css
+//= require common.css
+
+@mixin background_image_params
+  background-size: cover
+  -webkit-background-size: cover
+  -o-background-size: cover
+  -moz-background-size: cover
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$image,sizingMethod='scale')"
+
+.oauth-link
+  cursor: pointer
+
+.signin-wrap 
+  width: 100%
+  height: 100%
+  position: relative
+
+  .marking
+    background: image-url('without_sprite/marking.png') no-repeat
+    @include background_image_params
+    background-position: center
+    position: absolute
+    width: 164%
+    height: 100%
+    left: -33%
+
+  .rays 
+    background: image-url('without_sprite/rays.png') no-repeat
+    @include background_image_params
+    width: 80%
+    height: 100%
+    position: relative
+    margin: 0px auto
+    z-index: -3
+
+  .star 
+    position: absolute
+    margin: 0px 50%
+
+  .star-position-1
+    left: 75px
+    bottom: 530px
+    
+  .star-position-2
+    left: 150px
+    bottom: 150px
+    
+  .star-position-3
+    left: -435px
+    bottom: 285px
+    
+  .star-position-4
+    left: 70px
+    bottom: 375px
+    
+  .star-position-5
+    left: -110px
+    bottom: 530px
+    
+  .star-position-6
+    left: -405px
+    bottom: 460px
+    
+  .star-position-7
+    left: -175px
+    bottom: 185px
+    
+  .star-position-8
+    left: 280px
+    bottom: 185px
+    
+  .star-position-9
+    left: -305px
+    bottom: 530px
+    
+  .star-position-10
+    left: -300px
+    bottom: 90px
+    
+  .star-position-11
+    left: 225px
+    bottom: 415px
+  
+  .signin-mega
+    margin: 0px 50%
+    position: absolute
+    bottom: 340px
+    left: -333px
+
+  .signin-ball
+    position: absolute
+    bottom: 180px
+    margin: 0px 50%
+    left: -156px
+
+  .signin-fly-ball
+    position: absolute
+    bottom: 390px
+    left: 60px
+    margin: 0px 50%
+
+  .signin-fly-man
+    position: absolute
+    bottom: 190px
+    left: -350px
+    margin: 0px 50%
+
+  .signin-oauth
+    text-align: center
+    bottom: 60px
+    position: absolute
+    margin: 0px 50%
+    left: -160px
+
+    .oauth-providers-wrap
+
+      .oauth-link
+        display: block
+        float: left
+
+        &:hover
+          //background: image-url("signin/oauth_providers_light.png") 
+
+        &:last
+          clear: all
+
+      position: relative
+      margin: 24% auto
+      display: inline-block
+      overflow: hidden

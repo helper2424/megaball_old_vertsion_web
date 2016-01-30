@@ -1,0 +1,118 @@
+- if @vk
+  = javascript_include_tag "//vk.com/js/api/openapi.js?113"
+  = javascript_include_tag "//vk.com/js/api/share.js?90"
+  %script(type = "text/javascript")
+    VK.init({apiId: #{ raw @app_id.to_i.to_json }, onlyWidgets: true});
+
+  :sass
+    a
+      color: #115599
+      font-size: 14px
+    #vk_like, #vk_share
+      display: inline-block
+      vertical-align: top
+
+    .vk_button
+      vertical-align: top
+      display: inline-block
+      background: rgb(96, 132, 168)
+      padding: 4px 5px
+      border-radius: 3px
+      color: white
+      text-decoration: none
+      font-size: 11px
+      &:hover
+        background: rgb(106, 145, 185)
+
+      span
+        border-right: 1px solid rgb(142, 171, 202)
+        font-weight: bold
+        display: inline-block
+        margin-right: 4px
+        font-size: 12px
+        padding: 0 5px 0 3px
+
+  %div(style='background:white;padding: 15px; margin: 0')
+    %a.vk_button(href='http://vk.com/share.php?url=http://vk.com/megaball2&title=Мегабол:%20Остров%20Футбола&description=Заходи%20играть!%20http://vk.com/megaball2' target="_blank" onclick="VK.Share.click(0, this)")
+      %span В
+      Рассказать друзьям
+    %a.vk_button(href='javascript:VK.callMethod("showSettingsBox", 256)')
+      %span В
+      Добавить в левое меню
+    #vk_like
+
+  :javascript
+    VK.Widgets.Like("vk_like", { type: "button", pageUrl: "http://vk.com/megaball2" });
+
+#unityWrapper
+  #clubLogoUploader.hidden
+    .uploadDialog
+      %h1 #{ t :upload_file }
+      %p
+        %h3
+          %span.uploading #{ t :uploading }
+          %span.filename #{ t :click_to_select_file }
+        %br
+        .uploading
+          = image_tag "without_sprite/uploading.gif"
+        %button(class="select-file do-select") #{ t :select_file }
+      %p
+        %button(class="right-button do-cancel") #{ t :cancel_button }
+      %button(class="close-button do-cancel")
+
+      %form(method="post" enctype="multipart/form-data" action="/club/update_logo")
+        %input(type="file" name="logo")
+        %input(type="hidden" name="currency")
+        %label(for="logo")
+
+  #unityHider
+    #unityPlayer
+      .missing(style = "background-image: url(#{ asset_path t(:unity_instruction) })")
+        .whiteCover
+          #installUnityWindow
+            .text
+              = t :unity_not_installed
+            = link_to t(:download), "#", class: 'installUnity'
+
+- if @vk
+  %div(style='background:white;padding: 15px; margin: 0')
+    %p
+      %a(style='font-weight: bold' href='http://vk.com/megaball_official' target='_blank') Официальная группа Мегабола
+    %p
+      %a(href='https://vk.com/topic-55918620_28348205' target='_blank') Идеи и Предложения
+      |
+      %a(href='https://vk.com/topic-55918620_28593769' target='_blank') Идеи скинов
+      |
+      %a(href='https://vk.com/topic-55918620_28348127' target='_blank') Сообщить об ошибке
+      |
+      %a(href='https://vk.com/topic-55918620_28348136' target='_blank') FAQ
+      |
+      %a(href='https://vk.com/topic-55918620_28348136' target='_blank') Клубы
+
+%script(type = "text/javascript")
+  window.megaball_config = #{raw MEGABALL_CONFIG['window_wrapper'].to_json only: ['width', 'height']};
+  window.iframe = #{raw @iframe.to_json};
+  window.current_provider = #{raw @current_provider.to_json};
+  window.rootPath = #{raw root_url.to_json};
+  window.assetRootPath = #{raw asset_path('/').to_json};
+  window.unity_source = #{raw asset_path(@unity_file).to_json};
+  window.avatarUploaderUrl = #{raw MEGABALL_CONFIG['avatar_uploader_url'].to_json };
+  window.currentPluginStatus = #{raw @plugin_status.to_json};
+
+- if @vk
+  -#%script(type = "text/javascript")
+    -#VK.Widgets.Comments("vkComments", { limit: 6, width: 800, height: 600, attach: "link", pageUrl: "http://vk.com/megaball2" }, 1488);
+
+:javascript
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52596002-1', 'auto');
+  ga('set', 'user_id', #{ raw @user.id.to_json });
+  ga('set', 'social_network', #{ raw @social_network.to_json });
+  ga('set', 'social_uid', #{ raw @social_uid.to_json });
+  ga('send', 'pageview', #{ raw @visit_params.to_json });
+  
+= javascript_include_tag "game"

@@ -1,0 +1,1 @@
+MEGABALL_IFRAME_CONFIG = YAML.load_file("#{Rails.root}/config/iframe.yml")[Rails.env]

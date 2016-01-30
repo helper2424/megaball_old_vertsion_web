@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Статистика</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <style type="text/css">
+      table.gridtable {
+          font-family: verdana,arial,sans-serif;
+          font-size:11px;
+          color:#333333;
+          border-width: 1px;
+          border-color: #666666;
+          border-collapse: collapse;
+      }
+      table.gridtable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #666666;
+          background-color: #dedede;
+      }
+      table.gridtable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #666666;
+          background-color: #ffffff;
+      }
+
+      .spoiler { color: #135eaa }
+
+      .hide { display: none }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+var months_r = ["Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"];
+var months_i = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+
+function ShowDAU(data) {
+	var days = []
+	var values = []
+	var named_days = []
+    var first_date = 0;
+
+	for(var d in data) days.push(d);
+	days.sort();
+
+    if(days.length)
+        first_date = new Date(days[0]);
+
+	for(var i=0; i<days.length; ++i) 
+	{
+		var d = days[i];
+		values.push(data[d]);
+
+		var date = new Date(d)
+		named_days.push(date.getDate()+" "+months_r[date.getMonth()]);
+	}
+
+	$('#dau_chart').highcharts({
+		exporting: {
+			enabled: false
+    },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'DAU (Daily Active Users)'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+		},
+    xAxis: {
+       categories: named_days,
+       tickInterval: 4
+    },
+    yAxis: {
+      startOnTick: false,
+			title: {
+				text: 'Active Users'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'Active Users',
+			data: values
+		}]
+	});
+}
+
+function ShowMAU(data) {
+	var months = []
+	var named_months = []
+	var values = []
+	for(var m in data) months.push(m);
+	months.sort();
+	for(var i=0; i<months.length; ++i) 
+	{
+		var d = months[i];
+		var date = new Date(d)
+		named_months.push(date.getFullYear()+", "+months_i[date.getMonth()]);
+		values.push(data[d]);
+	}
+
+	$('#mau_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'MAU (Monthly Active Users)'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+		},
+		xAxis: {
+			categories: named_months
+		},
+		yAxis: {
+			title: {
+				text: 'Active Users'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'Active Users',
+			data: values
+		}]
+	});
+}
+
+function ShowMSAU(data) {
+	var months = []
+	var named_months = []
+	var values = []
+	for(var m in data) months.push(m);
+	months.sort();
+	for(var i=0; i<months.length; ++i) 
+	{
+		var d = months[i];
+		var date = new Date(d)
+		named_months.push(date.getFullYear()+", "+months_i[date.getMonth()]);
+		values.push(data[d]);
+	}
+
+	$('#msau_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'MSAU (Monthly Super Active Users)'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+		},
+		xAxis: {
+			categories: named_months
+		},
+		yAxis: {
+			title: {
+				text: 'Super Active Users'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'Super Active Users',
+			data: values
+		}]
+	});
+}
+
+function ShowDMAU(data) {
+	var months = []
+	var named_months = []
+	var values = []
+	for(var m in data) months.push(m);
+	months.sort();
+	for(var i=0; i<months.length; ++i)
+	{
+		var d = months[i];
+		var date = new Date(d)
+		named_months.push(date.getFullYear()+", "+months_i[date.getMonth()]);
+
+		var dat = data[d];
+    if(dat.mau) values.push( 1 * (dat.avg_dau*100/dat.mau).toFixed(1) );// in %
+    else values.push(0);
+	}
+
+	$('#dau_mau_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'Avg DAU / MAU'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+		},
+		tooltip: {
+			valueSuffix: '%'
+		},
+		xAxis: {
+       categories: named_months
+		},
+    yAxis: {
+      startOnTick: false,
+			title: {
+				text: 'Avg DAU / MAU (%)'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'Avg DAU / MAU',
+			data: values
+		}]
+	});
+}
+
+function ShowDCONV(data) {
+	var days = []
+	var values = []
+	var named_days = []
+
+	for(var d in data) days.push(d);
+	days.sort();
+
+	for(var i=0; i<days.length; ++i) 
+	{
+    var d = days[i];
+    var dat = data[d];
+    if(dat.dau>0)values.push(1 * (dat.payers*100/dat.dau).toFixed(1));// in %
+    else values.push(0);
+
+		var date = new Date(d)
+		named_days.push(date.getDate()+" "+months_r[date.getMonth()]);
+	}
+
+	$('#dconv_chart').highcharts({
+		exporting: {
+			enabled: false
+    },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'Daily Conversion'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+    },
+  	tooltip: {
+			valueSuffix: '%'
+		},
+		xAxis: {
+      categories: named_days,
+      tickInterval: 4
+		},
+    yAxis: {
+      startOnTick: false,
+			title: {
+				text: 'Daily Conversion (%)'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'Daily Conversion',
+			data: values
+		}]
+	});
+}
+
+function ShowMCONV(data) {
+	var months = []
+	var values = []
+  var named_months = []
+  for(var m in data) months.push(m);
+  months.sort();
+
+	for(var i=0; i<months.length; ++i)
+	{
+		var d = months[i];
+		var date = new Date(d)
+		named_months.push(date.getFullYear()+", "+months_i[date.getMonth()]);
+
+		var dat = data[d];
+    if(dat.mau>0)values.push( 1 * (dat.payers*100/dat.mau).toFixed(1) );// in %
+    else values.push(0);
+	}
+
+	$('#mconv_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'Monthly Conversion'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+    },
+  	tooltip: {
+			valueSuffix: '%'
+		},
+		xAxis: {
+			categories: named_months
+		},
+		yAxis: {
+			title: {
+				text: 'Monthly Conversion (%)'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'Monthly Conversion',
+			data: values
+		}]
+	});
+}
+
+function ShowARPPU(data) {
+	var months = []
+	var named_months = []
+	var values = []
+	for(var m in data) months.push(m);
+	months.sort();
+	for(var i=0; i<months.length; ++i) 
+	{
+		var d = months[i];
+		var date = new Date(d)
+    named_months.push(date.getFullYear()+", "+months_i[date.getMonth()]);
+    var dat = data[d];
+		values.push(1 * (dat.revenue/dat.payers).toFixed(4));
+	}
+
+	$('#arppu_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'ARPPU (Avg Revenue Per Paying User)'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+    },
+    tooltip: {
+			valueSuffix: ' гол.'
+		},
+		xAxis: {
+			categories: named_months
+		},
+		yAxis: {
+			title: {
+				text: 'ARPPU'
+        },
+		  plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'ARPPU',
+			data: values
+		}]
+	});
+}
+
+function ShowSharks(data) {
+	var months = []
+	var named_months = []
+	var values = []
+	for(var m in data) months.push(m);
+  months.sort();
+
+  var categories = ["Пискари","Дельфины","Акулы"]
+
+  for(var i=0; i<categories.length; ++i) 
+  {
+    values.push({data:[], name: categories[i] });
+  }
+
+	for(var i=0; i<months.length; ++i) 
+	{
+		var d = months[i];
+		var date = new Date(d)
+    named_months.push(date.getFullYear()+", "+months_i[date.getMonth()]);
+    var payers = data[d];
+    var cats = {};
+
+    for(var i=0; i<categories.length; ++i) 
+    {
+      values[i].data.push({y:0,amount:0});
+    }
+
+    for(var uid in payers)
+    {
+      var amount = parseFloat(payers[uid]);
+      var cat_id = 0;
+      if(amount>=50) cat_id = 1;
+      if(amount>=200) cat_id = 2;
+      var dd =  values[cat_id].data;
+      dd[dd.length-1].y++;
+      dd[dd.length-1].amount+=amount;
+    }
+	}
+
+	$('#sharks_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'Sharks'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+    },
+    tooltip: {
+      useHTML:true,
+      formatter: function() {
+        var result = this.x + "<br>" +
+          "<span style='color:"+this.series.color+"'>"+this.series.name+"</span>: <b>"+this.y+"</b><br>" +
+          "<span style='color:"+this.series.color+"'>Прибыль</span>: <b>"+this.point.amount+" гол.</b><br>";
+        if(this.y>0) result+="<span style='color:"+this.series.color+"'>Среднее</span>: <b>"+(this.point.amount/this.y).toFixed(2)+" гол.</b>";
+        return result;
+      }
+    },
+		xAxis: {
+			categories: named_months
+		},
+    yAxis: {
+      startOnTick: false,
+			title: {
+				text: 'Users'
+        },
+		  plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series:  values
+	});
+}
+
+function ShowURET(data) {
+	var months = []
+	var named_months = []
+	var values = []
+	for(var m in data) months.push(m);
+	months.sort();
+	for(var i=0; i<months.length; ++i)
+	{
+		var d = months[i];
+		var date = new Date(d)
+		named_months.push(date.getFullYear()+", "+months_i[date.getMonth()]);
+
+    var dat = data[d];
+    var p = 1 * (dat.count*100/dat.total).toFixed(1);
+    values.push({y:p, total:dat.total, count:dat.count});
+    //values.push(1*(100*dat.total/dat.count).toFixed(1));
+	}
+
+	$('#uret_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'Users Retention'
+    },
+    tooltip: {
+      useHTML:true,
+      formatter: function() {
+      return this.x + "<br>" +
+      "<span style='color:"+this.series.color+"'>"+this.series.name+"</span>: <b>"+this.y+"%</b><br>" +
+      "<span style='color:"+this.series.color+"'>Returns/Total</span>: <b>"+this.point.count+'/'+ this.point.total+"</b>";
+      }
+    },
+		subtitle: {
+			text: 'R3 Studio Ltd'
+		},
+		xAxis: {
+			categories: named_months
+		},
+		yAxis: {
+			title: {
+				text: 'Users Retention (%)'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'Users Retention',
+			data: values
+		}]
+	});
+}
+
+function ShowOPC(data) {
+	var days = []
+  var values = []
+  var named_days = []
+  var categories = ["Другое","Бутылки","Скилы","Футболки","Наборы","Лица","Ботинки","Шорты"]
+
+	for(var d in data) days.push(d);
+	days.sort();
+
+  for(var i=0;i<categories.length;++i)
+  {
+    values.push({data:[], name: categories[i] });
+  }
+
+	for(var i=0; i<days.length; ++i) 
+	{
+    var d = days[i];
+    var cats = data[d];
+
+    for(var j=0;j<categories.length;++j)
+    {
+      values[j].data.push(0);
+    }
+
+    for(var cid in cats)
+    {
+      var id = parseInt(cid);
+      var cat_name = categories[id];
+      if(cat_name == undefined) 
+      {
+        console.warn("Undefined category: "+cid);
+        continue;
+      }
+
+      var dd = values[id].data;
+
+      dd[dd.length-1] = cats[cid];
+    }
+
+		var date = new Date(d)
+		named_days.push(date.getDate()+" "+months_r[date.getMonth()]);
+  }
+
+	$('#opc_chart').highcharts({
+		exporting: {
+			enabled: false
+      },
+    chart: {
+      zoomType: 'x'
+    },
+		title: {
+			text: 'Orders Per Category'
+		},
+		subtitle: {
+			text: 'R3 Studio Ltd'
+    },
+		xAxis: {
+      categories: named_days,
+      tickInterval: 4
+		},
+    yAxis: {
+      startOnTick: false,
+			title: {
+				text: 'Orders Per Category'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: values
+	});
+}
+
+function ShowPurchasePerMonths(data)
+{
+    var months = [];
+    var named_months = [];
+    var itemsValue = {};
+    var values = [];
+    for(var m in data) months.push(m);
+    months.sort();
+
+    for (var month in months) {
+        var currentMonth = months[month];
+        var items = data[currentMonth];
+
+        var i = 0;
+        for (var itemName in items) {
+            var item = items[itemName];
+
+            if (itemsValue[itemName] == null) itemsValue[itemName] = [];
+            itemsValue[itemName].push({ value: item[0], coins: item[5], stars: item[4], texture: item[1], id: i });
+            i++;
+        }
+
+    }
+    for (var i = 0; i < months.length; ++i)
+    {
+        var currentDate = months[i];
+        var date = new Date(currentDate);
+
+        var items = data[currentDate];
+
+        values = [];
+
+        for (var item in items) {
+            value = items[item];
+
+            values.push({
+                name: item,
+                data: itemsValue[item].map(function(arg) {
+                    return arg.value;
+                }),
+                coins: itemsValue[item].map(function(arg) {
+                    return arg.coins;
+                }),
+                texture: itemsValue[item].map(function(arg) {
+                    return arg.texture;
+                }),
+                stars: itemsValue[item].map(function(arg) {
+                    return arg.stars;
+                })
+            })
+        }
+    }
+    console.log(values);
+    $('#purchase_chart').highcharts({
+        chart: {
+            zoomType: 'y, x',
+            spacingRight: 20
+        },
+        exporting: {
+            enabled: true
+        },
+        title: {
+            text: "Total purchases of goods"
+        },
+        subtitle: {
+            text: 'R3 Studio Ltd'
+        },
+        xAxis: {
+            categories: months
+        },
+        yAxis: {
+            startOnTick: false,
+            title: {
+                text: 'Number of purchases'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function() {
+                var index = this.point.x;
+
+                return this.x + "<br/>" + "<p style='text-align: center; font-size: medium'>" +
+                        this.series.name + "<br/>" +
+                        "<b>" + this.y + "</b>" +
+                        '<img style="vertical-align:middle" src="' + this.series.options.texture[0] + '" title="" alt="" border="0" height="35" width="35">' + "</p>" +
+                        "Total coins: " +  this.series.options.coins[index] + "<br/>" +
+                        "Total stars: &nbsp" + this.series.options.stars[index] + "<br/>"
+            },
+            useHTML: true
+        },
+        series: values
+    });
+
+    var chart = $('#purchase_chart').highcharts();
+    var $button = $('#purchases_hide');
+
+    $button.click(function() {
+        var series = chart.series[0];
+        if (series.visible) {
+            $(chart.series).each(function() {
+                this.setVisible(false, false);
+            });
+            chart.redraw();
+            $button.html('Show purchases');
+        } else {
+            $(chart.series).each(function() {
+                this.setVisible(true, false);
+            });
+            chart.redraw();
+            $button.html('Hide purchases');
+        }
+    });
+
+    values.sort(function(a, b) {
+        var sumA = a.data.reduce(function (previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        });
+        var sumB = b.data.reduce(function (previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        });
+
+        if (sumA < sumB)
+            return 1;
+        if (sumA > sumB)
+            return -1;
+        return 0;
+    });
+
+    var columns = ["Item name", "Total count"];
+
+    var table = "<table class='gridtable'>";
+
+    table += "<tr>";
+    for (var i = 0; i < columns.length; i++) {
+        table += "<th>" + columns[i] + "</th>";
+    }
+    table += "</tr>";
+
+    for (var i = 0; i < values.length; i++) {
+        if (values[i].name == "") continue;
+
+        table += "<tr>";
+        table += "<td>" + values[i].name +  '<img style="vertical-align:middle" src="' + values[i].texture[0] + '" title="" alt="" border="0" height="35" width="35">'  + "</td>"
+        table += "<td>" + values[i].data.reduce(function(previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        }) + "</td>"
+
+        table += "</tr>";
+    }
+    table += "</table>";
+    $("#purchases_table").append(table);
+}
+
+function ShowLevelMoneyDependency(data)
+{
+    var levels = [];
+    var real = [];
+    var img  = [];
+    for(var m in data)
+    {
+        levels.push(data[m][0] + " ур.");
+
+        if ( data[m][1] != undefined && data[m][1].length > 0) {
+            real.push(data[m][1][0]);
+            img.push(data[m][1][1]);
+        } else {
+            real.push(0);
+            img.push(0);
+        }
+    }
+
+    $('#money_level_chart').highcharts({
+        exporting: {
+            enabled: true
+        },
+        title: {
+            text: "Level-Money Dependency"
+        },
+        subtitle: {
+            text: 'R3 Studio Ltd'
+        },
+        xAxis: {
+            categories: levels
+        },
+        yAxis: {
+            startOnTick: false,
+            title: {
+                text: 'Money'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        series: [{
+            name: 'Stars',
+            data: real
+        }, {
+            name: 'Coins',
+            data: img
+        }]
+    });
+}
+
+function ShowLevelMoneyDependencyAverage(data)
+{
+    var levels = [];
+    var real = [];
+    var img  = [];
+    for(var m in data)
+    {
+        levels.push(data[m][0] + " ур.");
+
+        if (typeof data[m][1] !== 'undefined' && data[m][1].length > 0) {
+            real.push(1 * parseFloat(data[m][1][0]).toFixed(2));
+            img.push(1 * parseFloat(data[m][1][1]).toFixed(2));
+        } else {
+            real.push(0);
+            img.push(0);
+        }
+    }
+
+    $('#money_level_chart_average').highcharts({
+        exporting: {
+            enabled: true
+        },
+        title: {
+            text: "Level-Money Dependency Average"
+        },
+        subtitle: {
+            text: 'R3 Studio Ltd'
+        },
+        xAxis: {
+            categories: levels
+        },
+        yAxis: {
+            startOnTick: false,
+            title: {
+                text: 'Money'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        series: [{
+            name: 'Stars',
+            data: real
+        }, {
+            name: 'Coins',
+            data: img
+        }]
+    });
+}
+
+function ShowFacesPurchase(data)
+{
+    var months = [];
+    var named_months = [];
+    var itemsValue = {};
+    var values = [];
+    for(var m in data) months.push(m);
+    months.sort();
+
+
+    for (var month in months) {
+        var currentMonth = months[month];
+        var items = data[currentMonth];
+
+        var i = 0;
+        for (var itemName in items) {
+            var item = items[itemName];
+            if (itemsValue[itemName] == null) itemsValue[itemName] = [];
+            itemsValue[itemName].push({ value: item[0], coins: item[5], stars: item[4], texture: item[1], id: i, t: item[6] });
+            i++;
+        }
+
+    }
+    for (var i = 0; i < months.length; ++i)
+    {
+        var currentDate = months[i];
+        var date = new Date(currentDate);
+
+        var items = data[currentDate];
+
+        values = [];
+
+        for (var item in items) {
+            value = items[item];
+
+            values.push({
+                name: item,
+                data: itemsValue[item].map(function(arg) {
+                    return arg.value;
+                }),
+                coins: itemsValue[item].map(function(arg) {
+                    return arg.coins;
+                }),
+                texture: itemsValue[item].map(function(arg) {
+                    return arg.texture;
+                }),
+                stars: itemsValue[item].map(function(arg) {
+                    return arg.stars;
+                }),
+                t: itemsValue[item].map(function(arg) {
+                    return arg.t;
+                })
+            })
+        }
+    };
+    console.log(values);
+    $('#faces_purchase_chart').highcharts({
+        chart: {
+            zoomType: 'y, x',
+            spacingRight: 20
+        },
+        exporting: {
+            enabled: true
+        },
+        title: {
+            text: "Total purchases of faces"
+        },
+        subtitle: {
+            text: 'R3 Studio Ltd'
+        },
+        xAxis: {
+            categories: months
+        },
+        yAxis: {
+            startOnTick: false,
+            title: {
+                text: 'Number of purchases'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function() {
+                var index = this.point.x;
+                return this.x + "<p style='text-align: center; font-size: small'> id\: " +
+                        this.series.name + "<br/></p>" + "<p style='text-align: center; font-size: medium'>" +
+                        "<b>" + this.y + "</b><br/>" +
+                        '<img style="vertical-align:middle" src="' + "../../user/" + this.series.options.t[0] + "/" + this.series.options.texture[0] + '.png" title="" alt="" border="0" height="75" width=75">' + "</p>" +
+                        "Total coins: " +  this.series.options.coins[index] + "<br/>" +
+                        "Total stars: &nbsp" + this.series.options.stars[index] + "<br/>"
+            },
+            useHTML: true
+        },
+        series: values
+    });
+
+    var chart = $('#faces_purchase_chart').highcharts();
+    var $button = $('#faces_hide');
+
+    $button.click(function() {
+        var series = chart.series[0];
+        if (series.visible) {
+            $(chart.series).each(function() {
+                this.setVisible(false, false);
+            });
+            chart.redraw();
+            $button.html('Show faces');
+        } else {
+            $(chart.series).each(function() {
+                this.setVisible(true, false);
+            });
+            chart.redraw();
+            $button.html('Hide faces');
+        }
+    });
+
+    values.sort(function(a, b) {
+        var sumA = a.data.reduce(function (previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        });
+        var sumB = b.data.reduce(function (previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        });
+
+        if (sumA < sumB)
+            return 1;
+        if (sumA > sumB)
+            return -1;
+        return 0;
+    });
+
+    var columns = ["Face name", "Total count"];
+
+    var table = "<table class='gridtable'>";
+
+    table += "<tr>";
+    for (var i = 0; i < columns.length; i++) {
+        table += "<th>" + columns[i] + "</th>";
+    }
+    table += "</tr>";
+
+    for (var i = 0; i < values.length; i++) {
+        if (values[i].name == "") continue;
+
+        table += "<tr>";
+        table += "<td>" + values[i].name +  '<img style="vertical-align:middle" src="' + "../../user/" + values[i].t[0] + "/" + values[i].texture[0] + '.png" title="" alt="" border="0" height="75" width=75">'  + "</td>"
+        table += "<td>" + values[i].data.reduce(function (previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        }) + "</td>";
+
+        table += "</tr>";
+    }
+    table += "</table>";
+    $("#faces_purchase_table").append(table);
+}
+
+</script>
+<div id='charts' style='padding:10px'>
+<div id='chart_controls' style='display:inline-block;position:fixed;z-index:100;background-color:white;padding:10px;border:1px solid black'>
+<form action='?'>
+<table><tr><td align='right'>Начало периода (00:00):</td><td><input type="date" id='from_day' name="from" value="<%= @from_day.strftime "%Y-%m-%d" %>"></td></tr>
+<tr><td align='right'>Конец периода (23:59):</td><td><input type="date" id='to_day' name="to" value="<%= @to_day.strftime "%Y-%m-%d" %>"></td></tr>
+<tr><td><input type="submit" value="Посмотреть"></td></tr>
+</table>
+</form>
+</div>
+<div id='msau_chart' style='margin-top:200px;'></div>
+<div id='mau_chart'></div>
+<div id='dau_chart'></div>
+<div id='dau_mau_chart'></div>
+<div id='uret_chart'></div>
+<div id='dconv_chart'></div>
+<div id='mconv_chart'></div>
+<div id='sharks_chart'></div>
+<div id='arppu_chart'></div>
+<div id='opc_chart'></div>
+<div id='money_level_chart'></div>
+<div id='money_level_chart_average'></div>
+
+<div id='purchase_chart'></div>
+<button id="purchases_hide" style="display: none">Hide purchases</button>
+<div class="spoiler" data-hidden="purchases_table" id='purchases_spoiler'>Purchases table spoiler</div>
+<div class="hide" id='purchases_table'></div>
+
+
+<div id='faces_purchase_chart'></div>
+<button id="faces_hide" style="display: none">Hide faces</button>
+<div class="spoiler" data-hidden="faces_purchase_table" id='faces_purchase_spoiler'>Faces table spoiler</div>
+<div class="hide" id='faces_purchase_table'></div>
+</div>
+<%= yield %>
+<script type="text/javascript">
+
+var from_day = $('#from_day').val();
+var to_day = $('#to_day').val();
+
+$.ajax({
+		url: "/super_hidden_route/user_stats/msau?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowMSAU(data);
+		}
+    });
+$.ajax({
+		url: "/super_hidden_route/user_stats/mau?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowMAU(data);
+		}
+    });
+$.ajax({
+		url: "/super_hidden_route/user_stats/dau?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowDAU(data);
+		}
+	});
+$.ajax({
+		url: "/super_hidden_route/user_stats/dmau?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowDMAU(data);
+		}
+	});
+$.ajax({
+		url: "/super_hidden_route/user_stats/uret?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+      ShowURET(data);
+		}
+    });
+$.ajax({
+		url: "/super_hidden_route/user_stats/dconv?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowDCONV(data);
+		}
+    });
+$.ajax({
+		url: "/super_hidden_route/user_stats/mconv?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowMCONV(data);
+		}
+    });
+$.ajax({
+		url: "/super_hidden_route/user_stats/arppu?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowARPPU(data);
+		}
+    });
+$.ajax({
+		url: "/super_hidden_route/user_stats/opc?from="+from_day+"&to="+to_day,
+		dataType: 'json',
+		success: function(data)
+		{
+			ShowOPC(data);
+		}
+    });
+$.ajax({
+        url: "/super_hidden_route/user_stats/sharks?from=" + from_day + "&to=" + to_day,
+        dataType: 'json',
+        success: function(data)
+        {
+            ShowSharks(data);
+        }
+    });
+$.ajax({
+    url: "/super_hidden_route/user_stats/level_money_dependency",
+    dataType: 'json',
+    success: function(data)
+    {
+        ShowLevelMoneyDependency(data);
+    }
+});
+
+$.ajax({
+    url: "/super_hidden_route/user_stats/level_money_dependency_average",
+    dataType: 'json',
+    success: function(data)
+    {
+        ShowLevelMoneyDependencyAverage(data);
+    }
+});
+
+$.ajax({
+    url: "/super_hidden_route/user_stats/faces_purchase?from="  + from_day + "&to=" + to_day,
+    dataType: 'json',
+    success: function(data)
+    {
+        console.log($("#faces_hide").text());
+        $("#faces_hide").show();
+        ShowFacesPurchase(data);
+    }
+});
+
+$.ajax({
+    url: "/super_hidden_route/user_stats/purchase?from=" + from_day + "&to=" + to_day,
+    dataType: 'json',
+    success: function(data)
+    {
+        $("#purchases_hide").show();
+        ShowPurchasePerMonths(data);
+    }
+});
+
+$('.spoiler').click(function() {
+    var hiddenId = $(this).data('hidden');
+    console.log(hiddenId);
+    $('#' + hiddenId).slideToggle();
+    $('.hide:not(#' + hiddenId + ')').slideUp();
+});
+
+</script>
+</body>
+</html>

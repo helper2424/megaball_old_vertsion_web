@@ -1,0 +1,192 @@
+@import "../utils"
+@import "../animations"
+
+.progress
+  margin-left: -9px
+  position: relative
+
+  .tabs
+    position: relative
+    width: 471px
+    height: 37px
+    top: 33px
+    margin: 0 auto
+    overflow: hidden
+
+  .store-left
+    position: absolute
+    top: 169px
+    left: 3px
+
+  .store-right
+    position: absolute
+    top: 169px
+    right: 3px
+
+  .collections
+    .items
+      @include cell_params(50px, 85px, 690px, 268px)
+
+    .collection-item
+      $height: 75px
+      height: $height
+      margin-bottom: 18px
+
+      .info
+        float: left
+        width: 100px
+        text-align: center
+        margin: 10px 25px 0 0
+
+        .title
+          height: 30px
+          line-height: 14px
+
+      .collection-entry
+        $width: 80px
+        width: $width
+        height: $height
+        float: left
+
+        .wrapper
+          width: $width
+          height: $height
+          text-align: center
+          display: table-cell
+          vertical-align: middle
+
+          img
+            max-width: $width
+            max-height: $height
+            vertical-align: middle
+
+  .user_stat
+    .cell.items-left
+      @include cell_params(60px, 85px, 310px, 268px)
+    .cell.items-right
+      @include cell_params(415px, 85px, 310px, 268px)
+
+    .item
+      padding: 1px 7px
+      margin: 3px 0
+      font-size: 17px
+      color: #333
+
+      &:nth-child(odd)
+        background-image: image-url('without_sprite/white_cover.png')
+
+      .value
+        float: right
+        margin: -2px 0 0 0
+        font-size: 21px
+
+  .achievements
+
+    .cell.items
+      @include cell_params(50px, 80px, 720px, 268px)
+
+      .item
+        $width: 150px
+        $height: 128px
+        $bound_height: 30px
+        position: relative
+        float: left
+        width: $width
+        height: $height
+        margin: 0 30px 13px 0
+        text-align: center
+        overflow: hidden
+
+        .flow
+          @include absolute()
+          top: 0
+          left: 0
+          display: none
+
+        &.achieved .flow
+          display: block
+          @include rotation_animation_state()
+
+        .data
+          @include absolute()
+          top: 0
+          left: 0
+
+        .title div
+          vertical-align: middle
+          line-height: 14px
+          width: $width
+          height: $bound_height
+          display: table-cell
+          font-size: 13px
+
+        .progress 
+          height: $bound_height - 10px
+          margin-left: 0
+          & > *
+            margin: 5px auto 0 auto
+
+        .picture
+          width: $width
+          height: $height - 2 * $bound_height
+          display: table-cell
+
+          img
+            vertical-align: center
+            max-width: 100%
+            max-height: 100%
+
+        .achieved
+          text-align: center
+          font-size: 20px
+          padding: 5px
+
+        .description
+          position: fixed
+          width: 230px
+          margin: 30px 0 0 30px
+          font-size: 13px
+          line-height: 13px
+          text-align: left
+
+          .text
+            text-align: center
+
+          .subtitle
+            color: #666
+
+          p
+            margin: 5px
+
+          h1
+            font-size: 17px
+            line-height: 18px
+            text-align: center
+            margin: 3px
+
+          ul
+            list-style: none
+            margin: 0
+            padding: 0
+
+            li
+              margin: 0 0 1px 0
+              padding: 0
+              height: 27px
+              text-align: center
+
+              .label
+                color: #333
+                float: left
+                height: 100%
+                width: 80px
+                text-align: right
+                padding: 5px 5px 0 0
+                display: table-cell
+                font-size: 12px
+                vertical-align: middle
+
+              .value
+                font-size: 1.3em
+
+

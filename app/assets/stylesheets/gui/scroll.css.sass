@@ -1,0 +1,38 @@
+@import "../utils"
+
+$system_bar: 20px
+$bar_width: 24px
+
+.scroll-hider
+  position: relative
+  width: 100%
+  height: 100%
+  overflow: hidden
+
+.scroll
+  position: relative
+  width: 100%
+  height: 100%
+  padding-right: $system_bar
+  overflow-x: hidden
+  overflow-y: scroll
+  @include debug_bg(#0FF)
+
+.scroll-body
+  margin-right: 10px
+  @include debug_bg(#FF0)
+
+.scroll-bar
+  @include absolute($bar_width, 100%)
+  background: image-url('scroll/scroll_bg.png') center
+  top: 0
+  right: 0
+  @include debug_bg(#F0F)
+
+.scroll-handle
+  @include absolute(100%, 27px)
+  background: image-url('scroll/scroll_handle.png') center -10px no-repeat
+  top: 0
+  right: 0
+  z-index: 10
+  @include debug_bg(#FFF)

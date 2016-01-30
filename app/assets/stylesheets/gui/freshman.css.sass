@@ -1,0 +1,35 @@
+@import "../utils"
+
+#freshman
+  $overlay: 23px
+  text-align: center
+  padding-left: $overlay
+  margin-top: -20px
+
+  .step
+    display: inline-block
+    background: image-url('backgrounds/freshman.png')
+    margin-left: -$overlay
+    height: 68px
+    cursor: pointer
+
+    @mixin bgpos($offset)
+      background-position: $offset 0
+      &.active
+        background-position: $offset -68px
+
+    &.join-group
+      width: 189px
+      @include bgpos(0)
+
+    &.get-friends
+      width: 202px
+      @include bgpos(-189px)
+
+    &.set-picture
+      width: 279px
+      @include bgpos(-189px - 202px)
+
+    &.get-prise
+      width: 173px
+      @include bgpos(-189px - 202px - 279px)

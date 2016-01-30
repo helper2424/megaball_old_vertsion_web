@@ -1,0 +1,65 @@
+Инструкция по развертыванию веб-сервера
+
+Веб-сервер работает на Ruby on Rails, перед его запуском и установкой требуется 
+сначала установить Ruby и Ruby on Rails:
+
+Версии:
+Ruby 1.9.3 и старше 
+Ror версия 3.2.13 и старше
+
+Лучше всего устанавливать на unix-like операционные системы
+Можно работать и на windows, но разработчики не советуют этого делать 
+по многим причинам.
+
+Как устанавливать - http://www.ruby-lang.org/en/downloads/
+
+Также вам понадобится gcc, g++, gem и bundle для работы с Ror.
+
+Далее необходимо в удобном для вас каталоге сделать:
+$ git clone git@dev.x01d.com:helper2424/megaball-web.git
+$ cd megaball-web
+
+Далее необходимо в файле config/unicorn.rb запистаь в app_dir
+путь до каталога megaball-web, который был склонирован из репозитория.
+
+Далее необходимо установить mongodb не ниже версии 2.0 (лучше 64-битную). 
+Скачать можно здесь http://www.mongodb.org/downloads . После установки 
+необходимо добавить пользователей в соответствующие базы данных, реквезиты
+в файле config/mongoid.yml
+
+> Если запускать mongodb без флага --auth , то пользователей можно не добавлять
+
+После установки и настройки mongodb перейдите в каталог megaball-web и
+выполните слудующие команды:
+
+$ bundle install 
+$ bundle exec rake db:purge RAILS_ENV=production
+$ bundle exec rake db:seed RAILS_ENV=production
+$ bundle exec unicorn_rails -c config/unicorn.rb -E production
+
+> Если необходимо запустить в другом режиме, например development, то необходимо
+> вместо production его указать в параметрах RAILS_ENV и -E
+
+PS: Также можно сделать скрипт автоматического запуска megaball-web. Сначала 
+необходимо оредактировать файл megaball_web лежащий в корне megaball-web, для
+этого необходимо в параметре APP_ROOT указать путь до megaball-web, также в поле
+USER указать пользвоаателя, котоый владеет каталогом megaball-web ии из под 
+которого будет запускать сервер. Далее нужно скопировать скрипт в каталог
+/etc/init.d , присвоить права рута (sudo chown root:root) и сделать исполняемым
+(sudo chmod +x megaball_web) . После чего можно добавить в автозапуск 
+(sudo update-rc.d megaball-web). После чего можно запускать и останавливать 
+сервер через команду service:
+
+$ service megaball_web start
+$ service megaball_web stop
+$ service megaball_web restart
+$ service megaball-web status
+
+(Команды могу быть специфичными для вашего дистрибутива, если не справитесь 
+с установкой, то воспользуйтесь google, или напишите вопрос на почту 
+helper2424@gmail.com)
+
+
+Валюты:
+	1 - real - звезды
+	2 - imagine - монеты

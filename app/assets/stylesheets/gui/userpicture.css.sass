@@ -1,0 +1,46 @@
+@import "../utils"
+
+.user-picture
+  width: 123px
+  height: 123px
+  position: relative
+  color: rgb(71, 66, 58)
+  
+  img, div
+    @include absolute()
+    background:
+      position: center center
+      repeat: no-repeat
+    overflow: hidden
+    top: -5px
+    border: none
+    @include debug_bg(#0f0)
+
+    &.mini-platform
+      background-image: image-url('user/mini_platform.png')
+      top: 1px
+      left: 1px
+      width: 40px
+      height: 38px
+
+    &.simple-platform
+      background-image: image-url('user/simple_platform.png')
+      top: 22px
+      left: 10px
+      width: 108px
+      height: 102px
+
+    &.platform
+      background-image: image-url('user/platform.png')
+      top: 23px
+      left: -12px
+      width: 156px
+      height: 104px
+
+  &.small
+    width:  70px
+    height: 70px
+
+  &.mini
+    width: 40px
+    height: 40px

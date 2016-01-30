@@ -1,0 +1,22 @@
+/*
+
+        Creating a sprite from following images:
+        
+        best_football/banner.png (800x600)
+        best_football/play-button.button.png (251x55)
+        best_football/play-button.button--hover.png (251x55)
+        best_football/play-button.button--active.png (251x55)
+
+        Output files:
+          best_football.png
+          best_football.css
+
+        Output size:
+          1553x600
+
+
+*/
+img.banner { width: 800px; height: 600px; background: url(best_football.png) 0px 0px no-repeat; }
+.play-button.button { width: 251px; height: 55px; background: url(best_football.png) -800px -272px no-repeat; }
+.play-button.button:hover { width: 251px; height: 55px; background: url(best_football.png) -1051px -272px no-repeat; }
+.play-button.button:active { width: 251px; height: 55px; background: url(best_football.png) -1302px -272px no-repeat; }

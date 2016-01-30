@@ -1,0 +1,20 @@
+@import "../utils"
+@import "../animations"
+
+.layout
+  @include debug_bg(red)
+  width: 770px
+  height: 375px
+  position: relative
+
+.cell
+  @include absolute()
+  @include debug_bg(blue)
+
+.showing .layout
+  position: absolute
+  z-index: 0
+  @include appear_animation_state()
+
+.white-cover .layout
+  @include zoomin_animation_state()

@@ -1,0 +1,15 @@
+<div class"invite_wrapper">
+  <div class="layout invites">
+    <h1>Здравствуйте! Вы являетесь участником закрытого бета-тестирования, для входа в игру введите инвайт полученный вами от друга, или от команды разработчиков</h1>
+    <% if @error %>
+      <h2 style="color:red;"><%= @error %></h2>
+    <% end %>
+    <form method="POST" id='form' action="<%= url_for controller: :invites, action: :check, params: request.GET %>">
+      <input type="text" name="invite" class='text'>
+      <div class='button gray' onclick='$("#form").submit()'>
+        <input type='button' class='button right' />
+        войти в игру
+      </div>
+    </form>
+  </div>
+</div>

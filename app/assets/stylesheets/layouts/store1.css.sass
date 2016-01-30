@@ -1,0 +1,117 @@
+@import "../utils"
+
+.store
+  position: relative
+  left: -8px
+
+  .tabs
+    width: 100%
+    height: 35px
+    padding-top: 20px
+    margin: 0 auto
+    text-align: center
+    overflow: hidden
+
+  .cell.left
+    @include cell_params(3px, 169px, 33px, 32px)
+
+  .cell.right
+    @include cell_params(auto, 169px, 33px, 32px)
+    right: 6px
+
+  .cell.products
+    @include cell_params(45px, 66px, 740px, 286px)
+
+    .product
+      $width: 160px
+      width: $width
+      height: 100%
+      float: left
+      margin-right: 21px
+      position: relative
+      color: #333
+      @include debug_bg(#fff)
+
+      .overlay
+        position: absolute
+        top: 5px
+        left: 0
+        width: 100%
+        text-align: center
+
+        .black-cover
+          $x: $width - 25px
+          @include absolute($x, $x)
+          top: 30px
+          left: 50%
+          margin-left: -$x/2
+          background: image-url('without_sprite/black_cover.png')
+          border-radius: 15px
+
+          .lock
+            margin: 45px auto 0 auto
+
+        .title
+          @include absolute()
+          $size: 23px
+          font-size: $size
+          line-height: $size
+
+        .texture
+          width: $width
+          padding-top: 50px
+          height: 120px
+          display: table-cell
+          background: image-url('without_sprite/flow_store.png') 50% bottom no-repeat
+
+        .label-new-icon
+          position: absolute
+          top: 110px
+          left: 15px
+
+        .sales-icon
+          position: absolute
+          right: 15px
+          top: 30px
+
+        .already-bought
+          position: absolute
+          width: 100px
+          height: 100px
+          line-height: 100px
+          font-size: 15px
+          text-align: center
+          color: white
+          background: image-url('without_sprite/black_cover.png')
+          border-radius: 50px
+          top: 44px
+          left: 31px
+
+        img
+          vertical-align: middle
+          max-width: 100%
+          max-height: 100%
+          margin-bottom: 15px
+
+        .description
+          line-height: 15px
+          margin-bottom: 5px
+          height: 35px
+
+        .level
+          margin-bottom: 12px
+
+        .price-star-big
+          margin:
+            left: -6px
+
+        .price
+          margin-bottom: 13px
+
+        .button.gray
+          margin-left: 26px
+          margin-right: 34px
+
+        .button.gray.to-reload
+          margin-left: 20px
+          margin-right: 17px

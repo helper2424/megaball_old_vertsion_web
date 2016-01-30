@@ -1,0 +1,49 @@
+@import "../utils"
+
+.bank
+  margin: 115px auto 0 auto
+  position: relative
+
+  .gray
+    margin-bottom: 7px
+    font-size: 14px
+    line-height: 30px
+
+  .cell.close
+    @include cell_params(auto, 15px, 50px, 50px)
+    right: -20px
+
+  .cell.tabs
+    @include cell_params(216px, 60px, 235px, 36px)
+    text-align: left
+
+  .cell.left-price
+    @include cell_params(36px, 126px, 157px, 118px)
+
+  .cell.right-price
+    @include cell_params(336px, 126px, 157px, 118px)
+
+  .cell.left-buttons
+    @include cell_params(177px, 126px, 150px, 118px)
+
+  .cell.right-buttons
+    @include cell_params(477px, 126px, 150px, 118px)
+
+  .cell.free-votes
+    @include cell_params(300px, 260px, 321px, 56px)
+
+  .special-offer-icon
+    position: absolute
+    left: 30px
+    bottom: 15px
+
+  .bank_free_votes_stub
+    position: absolute
+    left: 100px
+    bottom: 10px
+
+  .base
+    color: white
+
+  .bonus
+    color: rgb(249, 222, 0)

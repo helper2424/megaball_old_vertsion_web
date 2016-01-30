@@ -1,0 +1,61 @@
+@import "../utils"
+@import "../animations"
+
+.store.store2
+  position: relative
+  
+  .faces
+    .cell.flow
+      @include cell_params(266px, 18px, 169px, 169px)
+      img
+        @include rotation_animation_state()
+        width: 100%
+
+    .cell.picture
+      @include cell_params(292px, 30px, 123px, 123px)
+
+    .cell.price-block
+      @include cell_params(273px, 207px, 152px, 102px)
+      text-align: center
+
+      .action
+        margin: 10px 23px 0 24px
+
+    .cell.face-items
+      $height: 85px
+      $margin_bottom: 13px
+      @include absolute()
+
+      .category
+        width: 100%
+        height: $height + $margin_bottom
+
+      .face-item
+        float: left
+        width: 105px
+        height: $height
+        margin: 0 25px 0 0
+        position: relative
+
+        &.with-space
+          margin-left: 205px
+
+        .price 
+          text-align: center
+          margin-top: -8px
+
+        &:hover
+          background: image-url('without_sprite/flow_small.png') center center no-repeat
+
+        .user-picture
+          margin: 0px auto 0 auto
+
+        .black-cover
+          @include absolute(70%, 75%)
+          top: 4%
+          left: 15%
+          background: image-url('without_sprite/black_cover.png')
+          line-height: 69px
+          text-align: center
+          color: #fff
+          border-radius: 50px

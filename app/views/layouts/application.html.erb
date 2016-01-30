@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MegaballWeb</title>
+  <%= javascript_include_tag "application" %>
+
+  <style type="text/css">
+    body {
+      min-width: <%= MEGABALL_CONFIG['window_wrapper']['width'] %>;
+      background: url(<%= asset_path "/assets/without_sprite/back_outside#{params[:controller] == 'devise/sessions' ? '_auth' : ''}.png" %>) center -100px;
+    }
+  </style>
+</head>
+<body>
+
+<% if !@iframe %>
+  <!-- <div class="frame_wrapper"> -->
+  <div class="main_wrapper" style="width:<%= MEGABALL_CONFIG['window_wrapper']['width'] %>;height:<%= MEGABALL_CONFIG['window_wrapper']['height']%>">
+<% else %>
+  <% if @current_provider == 'vk' %>
+    <script type="text/javascript">
+      vk_protocol = 'http:';
+
+      if (document.location.protocol == 'https:')
+        vk_protocol = 'https:';
+
+      document.write('<script type="text\/javascript" src="' + vk_protocol + '//vk.com/js/api/xd_connection.js?2"><\/script>');
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        VK.init(function() { 
+            window.MegaballWeb.VKInit();
+          });
+      });
+
+      window.init_groups = true;
+    </script>
+  <% elsif @current_provider == 'ok' %>
+    <div class="main_wrapper" style="width:<%= MEGABALL_CONFIG['window_wrapper']['width'] %>;height:<%= MEGABALL_CONFIG['window_wrapper']['height']%>">
+    
+    <script src="<%= params['api_server'] %>js/fapi.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //Initiatlize OK API
+        FAPI.Client.initialize();
+        
+        window.social_service = new MegaballWeb.Social.OK
+        window.payment_source = new MegaballWeb.Payment.OK
+
+        FAPI.init('<%= params['api_server'] %>', '<%= request.query_string.html_safe %>',
+          function(){ window.MegaballWeb.OkInit();}, 
+          function(error){
+             alert("API initialization failed");
+        });
+
+        //Callback function 
+        function API_callback(method, result, data){
+            alert("Method "+method+" finished with result "+result+", "+data);
+        } 
+
+      });
+
+      window.init_groups = true;
+    </script>
+
+  <% elsif @current_provider == 'mailru' %>
+    <script type="text/javascript" src="http://cdn.connect.mail.ru/js/loader.js"></script>
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        mailru.loader.require('api', function() {
+          mailru.app.init('<%= MEGABALL_IFRAME_CONFIG[@current_provider]['private_key'] %>');
+          
+          window.MegaballWeb.MailRuInit();
+        });
+      });
+
+      window.init_groups = true;
+    </script>
+  <% end %>
+<% end %>
+
+<%= yield %>
+
+<% if !@iframe or (@iframe and @current_provider == 'ok')%>
+  <!-- </div> -->
+</div>
+<% end %>
+
+<% if @iframe %>
+<div class="navigation-help-wrapper">
+<% end %>
+  <div class="navigation-help">
+
+  </div> 
+
+<% if @iframe %>
+</div>
+<% end %>
+
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21522046 = new Ya.Metrika({id:21522046,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+
+</body>
+</html>

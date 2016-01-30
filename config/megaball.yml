@@ -1,0 +1,250 @@
+defaults: &defaults
+  unity_bin_name: "bin.unity3d"
+  window_wrapper:
+    width: 800px
+    height: 620px
+  logs:
+    game_server: "/var/log/megaball_server/megaball_server.log"
+    policy: "/var/log/unity_policy_server/policy.log"
+    event: "/var/log/megaball_server/megaball_event_server.log"
+    web_server: "/home/development/megaball_web/log/production.log"
+    chat_server: "/var/log/megaball_server/megaball_chat_server.log"
+  points_per_level: 1
+  name_max_length: 15
+  points: 14
+  invites: false
+  install_unity_wep_player_url: "http://unity3d.com/webplayer/"
+  help_url: "http://vk.com/topic-55918620_28879620"
+  default_weapons: []
+  stats:
+    address: "http://192.168.0.135:1111/"
+    secret_key: ""
+
+  bots_border: 100
+  avatar_uploader_url: "https://dev.r3studio.ru/uploader/avatar"
+  avatar_mailru_uploader_url: "http://dev.r3studio.ru/uploader/mailru_avatar"
+  #avatar_uploader_url: "http://62.76.185.189:3000/uploader/avatar"
+  #avatar_uploader_url: "http://madmin.ru/postphoto.php"
+ 
+  user_fields_to_reset: [
+    'last_daily_bonus', 'days_in_row', 'experience', 'last_experience', 'energy', 
+    'energy_restore_factor', 'last_energy_update', 'group_id', 'room_id', 'server', 'mana', 'mana_max', 
+    'leg_length', 'kick_power', 'move_force', 'super_kick_power', 'points', 'last_match_ids', 
+    'played_fast_matches', 'ended_fast_matches', 'played_arenas', 'created_arenas', 'created_rooms', 
+    'played_trainings', 'played_in_group', 'distance_walked', 'nitro_used', 'ball_kicks', 'player_kicks', 
+    'goals', 'goal_passes', 'gate_saves', 'rod_hits', 'wins', 'draws', 'fails', 'rating', 'daily_rating', 
+    'monthly_rating', 'daily_rating_day', 'monthly_rating_month', 'best_player', 'friends_count', 
+    'skill_usage', 'dynamic_stats', 'have_seen_menu', 'plugin_status', 'skin', 'user_collection', 
+    'daily_mission_backup', 'user_achievement'
+  ]
+
+  max_days_in_row: 5
+
+  club_defaults:
+    max_level: 15
+    ratings_refresh: 600 # 10 mins
+    hide_for_inactivity: 604800 # 1 week
+    name_max_length: 20
+    short_name_max_length: 4
+
+  club_price_list:
+    create:      { real: -1, imagine: 250, user_level: 15 }
+    rename:      { real: 1,  imagine: -1, product_id: 1, level: 1 }
+    update_logo: { real: 1,  imagine: -1, product_id: 2, level: 3 }
+    role:        { real: 0,  imagine: 0,  product_id: 3, level: 2 }
+
+  club_levels: # upgrade product_id: 0
+    - { from: 1,  max_players: 5,  upgrade: { real: -1,  imagine: 350 } }
+    - { from: 2,  max_players: 10, upgrade: { real: -1,  imagine: 500 } }
+    - { from: 3,  max_players: 15, upgrade: { real: 1,   imagine: 1000 } }
+    - { from: 4,  max_players: 20, upgrade: { real: 5,   imagine: 2000 } }
+    - { from: 5,  max_players: 25, upgrade: { real: 10,  imagine: 5000 } }
+    - { from: 6,  max_players: 30, upgrade: { real: 15,  imagine: -1 } }
+    - { from: 7,  max_players: 35, upgrade: { real: 20,  imagine: -1 } }
+    - { from: 8,  max_players: 40, upgrade: { real: 30,  imagine: -1 } }
+    - { from: 9,  max_players: 45, upgrade: { real: 40,  imagine: -1 } }
+    - { from: 10, max_players: 50, upgrade: { real: 50,  imagine: -1 } }
+    - { from: 11, max_players: 55, upgrade: { real: 75,  imagine: -1 } }
+    - { from: 12, max_players: 60, upgrade: { real: 100, imagine: -1 } }
+    - { from: 13, max_players: 65, upgrade: { real: 150, imagine: -1 } }
+    - { from: 14, max_players: 70, upgrade: { real: 200, imagine: -1 } }
+    - { from: 15, max_players: 75, upgrade: { real: 400, imagine: -1 } }
+
+  mana_restore_factors:
+    - [0, 0]
+    - [1, 1]
+    - [7, 1.4]
+    - [30, 1.8]
+
+  payment:
+    mailru:
+      gate: 'mailru'
+      currency_name: 'mailik'
+      min_payment:
+        imagine: 50
+        real: 3
+      imagine:
+        - [50, 0]
+        - [150, 10]
+        - [250, 25]
+        - [500, 50]
+        - [1000, 120]
+        - [2500, 400]
+        - [5000, 900]
+        - [6000, 1000]
+      real:
+        - [1, 0]
+        - [3, 0]
+        - [5, 1]
+        - [10, 2]
+        - [20, 5]
+        - [50, 15]
+        - [100, 40]
+        - [200, 100]
+    fb:
+      gate: 'fb'
+      currency_name: 'dollar'
+      min_payment:
+        imagine: 50
+        real: 3
+      imagine:
+        - [50, 0]
+        - [150, 10]
+        - [250, 25]
+        - [500, 50]
+        - [1000, 120]
+        - [2500, 400]
+        - [5000, 900]
+        - [6000, 1000]
+      real:
+        - [1, 0]
+        - [3, 0]
+        - [5, 1]
+        - [10, 2]
+        - [20, 5]
+        - [50, 15]
+        - [100, 40]
+        - [200, 100]
+    vk:
+      gate: 'vk'
+      currency_name: 'vote'
+      min_payment:
+        imagine: 50
+        real: 3
+      imagine:
+        - [50, 0]
+        - [150, 10]
+        - [250, 25]
+        - [500, 50]
+        - [1000, 120]
+        - [2500, 400]
+        - [5000, 900]
+        - [6000, 1000]
+      real:
+        - [1, 0]
+        - [3, 0]
+        - [5, 0]
+        - [10, 1]
+        - [20, 2]
+        - [50, 5]
+        - [100, 10]
+        - [200, 20]
+    ok:
+      gate: 'ok'
+      currency_name: 'ok'
+      min_payment:
+        imagine: 50
+        real: 3
+      imagine:
+        - [50, 0]
+        - [150, 10]
+        - [250, 25]
+        - [500, 50]
+        - [1000, 120]
+        - [2500, 400]
+        - [5000, 900]
+        - [6000, 1000]
+      real:
+        - [1, 0]
+        - [3, 0]
+        - [5, 1]
+        - [10, 2]
+        - [20, 5]
+        - [50, 15]
+        - [100, 40]
+        - [200, 100]
+    default:
+      currency_name: 'ruble'
+      gate: 'robokassa'
+      min_payment:
+        imagine: 50
+        real: 3
+      imagine:
+        - [50, 0]
+        - [150, 10]
+        - [250, 25]
+        - [500, 50]
+        - [1000, 120]
+        - [2500, 400]
+        - [5000, 900]
+        - [6000, 1000]
+      real:
+        - [1, 0]
+        - [3, 0]
+        - [5, 1]
+        - [10, 2]
+        - [20, 5]
+        - [50, 15]
+        - [100, 40]
+        - [200, 100]
+  notification_phrases:
+    - "Энергия восстановилась! Пора снова побеждать!"
+    - "Тебя вызывают на поле в МегаБол!"
+    - "Мы обновились! Пойдем погоняем мяч!"
+    - "Тысячи соперников готовы сразиться с тобой!"
+    - "Не забывай заходить в игру и получать ежедневный бонус!"
+    - "Твоё место в рейтинге заняли! Приходи и покажи, кто здесь лучший!"
+  energy_notification_phrases:    
+    - "Энергия восстановилась! Пора снова побеждать!"
+  vk:
+    id: '3991734'
+    secret_key: '62WdbXQeF7hZu5HaXW7X'
+
+
+development:
+  <<: *defaults
+  #unity_bin_name: "http://192.168.1.128:8080/Out.unity3d"
+  unity_bin_name: "http://dev.r3studio.ru/Build.unity3d?3"
+  default_weapons: [1, 2, 4]
+
+test:
+  <<: *defaults
+  default_weapons: [1, 2]
+
+production:
+  <<: *defaults
+  unity_bin_name: "/devbuild.unity3d"
+  default_weapons: [1, 2, 4]
+  vk:
+    id: ''
+    secret_key: ''
+
+release: &release
+  <<: *defaults
+  default_weapons: [1, 2, 4]
+  logs:
+    web_server: "/home/r3studio/megaball2_web/log/release.log"
+    game_server: "/var/log/megaball2_server/megaball2_server.log"
+    policy: "/var/log/unity_policy_server/policy.log"
+    event: "/var/log/megaball2_server/megaball2_event_server.log"
+    chat_server: "/var/log/megaball2_server/megaball2_chat_server.log"
+  invites: false
+  unity_bin_name: "/14_09_18_08_41_megaball2.unity3d"
+  #unity_bin_name: "/14_05_19_10_40_megaball2.unity3d"
+  #unity_bin_name: "/14_05_15_11_31_megaball2.unity3d"
+  avatar_uploader_url: "https://mb2.r3studio.ru/uploader/avatar"
+  avatar_mailru_uploader_url: "http://mb2.r3studio.ru/uploader/mailru_avatar"
+  bots_border: 10000
+  vk:
+    id: ''
+    secret_key: ''

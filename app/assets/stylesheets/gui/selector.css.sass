@@ -1,0 +1,34 @@
+@import "../utils"
+
+.selector
+  margin: -3px 0 10px 0
+  position: relative
+
+  .button.left
+    position: absolute
+    top: -3px
+    left: 0
+
+  .button.right
+    position: absolute
+    top: -3px
+    right: 0
+
+  ul
+    $padding: 14px
+    $width: 38px
+    width: auto !important
+    list-style: none
+    margin: 0 ($width - $padding)
+    padding: 0
+    white-space: nowrap
+    overflow: hidden
+    @include debug_bg(#0f0)
+
+    li
+      color: #fff
+      margin: 0
+      padding: 0 $padding
+      line-height: 30px
+      text-align: center
+      font-size: 16px

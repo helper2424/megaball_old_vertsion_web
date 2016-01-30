@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  width: 1
+  height: 1
+  type: 1
+  texture_url: MyString
+
+two:
+  id: 1
+  width: 1
+  height: 1
+  type: 1
+  texture_url: MyString

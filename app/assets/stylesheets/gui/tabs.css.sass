@@ -1,0 +1,107 @@
+@import "../utils"
+
+.tabs
+  $height: 38px
+  // Between tabs
+  $overlay: 6px
+  // Inside tab
+  $shift: -14px
+  // Wings
+  $left-width: 31px
+  $right-width: 39px
+
+  height: ($height - 2px)
+  overflow: hidden
+  white-space: nowrap
+
+  .tab
+    position: relative
+    display: inline-block
+    vertical-align: top
+    margin: 0 $overlay 0 $left-width
+    height: $height
+    cursor: pointer
+    color: #fff
+    font-size: 22px
+    line-height: 18px
+    @include debug_bg(#0f0)
+
+    *
+      cursor: pointer
+
+    &:before
+      @include absolute($left-width, 100%)
+      content: ' '
+      background: image-url('tabs/tab_left.png')
+      top: 0
+      left: -$left-width
+      @include debug_bg(#f00)
+
+    &:after
+      @include absolute($right-width, 100%)
+      content: ' '
+      background: image-url('tabs/tab_right.png')
+      top: 0
+      right: -$right-width
+      @include debug_bg(#00f)
+
+    .background
+      @include absolute()
+      overflow: hidden
+      img
+        @include absolute(100%, $height*4)
+        left: 0
+
+    .content
+      visibility: hidden
+      margin-left: $shift
+
+    .fake-text
+      @include absolute()
+      top: 12px
+      left: -3px
+      z-index: 1
+      text-align: center
+      @include debug_bg(#f0f)
+      .label
+        margin-top: 3px
+
+
+    .counter
+      position: absolute
+      top: -10px
+      right: -15px
+      background: #f00
+      font: 11px verdana
+      font-weight: bold
+      padding: 2px
+      border-radius: 50px
+      border: 2px solid #fff
+      @include crossbrowser("box-shadow", 0 0 5px #000)
+
+    &.no-shift
+      .content
+        margin-left: 0
+      .fake-text
+        left: 0
+
+    &:hover
+      &:before, &:after
+        @include bg_state($STATE_HOVER, $height)
+      .background img
+        top: -100%
+
+    &.active
+      color: rgb(176, 209, 31)
+      z-index: 2
+      &:before, &:after
+        @include bg_state($STATE_ACTIVE, $height)
+      .background img
+        top: -200%
+
+    &.inactive
+      color: rgb(152, 150, 149)
+      &:before, &:after
+        @include bg_state($STATE_INACTIVE, $height)
+      .background img
+        top: -300%

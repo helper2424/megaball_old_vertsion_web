@@ -1,0 +1,19 @@
+@import "../utils"
+
+.not-enough-money
+  margin: 200px auto 0 auto
+  position: relative
+
+  .cell.close
+    @include cell_params(auto, 5px, 50px, 50px)
+    right: -10px
+
+  .cell.body
+    @include cell_params(38px, 45px, 316px, 133px)
+    text-align: center
+
+    .label
+      margin-bottom: 15px
+
+    .gray
+      margin: -7px 60px 13px 60px

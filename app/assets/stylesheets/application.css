@@ -1,0 +1,32 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *- require ./keyframes.css
+ *- require ./font.css
+ *- require ./main.css
+ *- require ./signin.css
+ *
+ *- require_self
+ *- require_directory .
+ *- require_directory ./gui
+ *- require_directory ./layouts
+ *
+ *= require layouts_dir.css
+ *= require label_dir.css
+ *= require buttons_dir.css
+ *= require icons_dir.css
+ *= require backgrounds_dir.css
+ *= require keyframes.css
+ *= require font.css
+ *= require common.css
+ *= require main.css
+ *= require_directory ./gui
+ *= require_directory ./layouts
+ *
+ */

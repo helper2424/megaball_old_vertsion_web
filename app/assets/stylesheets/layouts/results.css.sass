@@ -1,0 +1,124 @@
+@import "../utils"
+@import "../animations"
+
+.results
+  position: relative
+  height: 580px
+  overflow: hidden
+  padding: 0
+
+  .flow
+    $width: 1045px
+    $height: 1045px
+    @include absolute($width, $height)
+    @include rotation_animation_state()
+    background: image-url('without_sprite/flow_large.png') center center
+    top: 0
+    left: 50%
+    margin: -210px 0 0 (-$width/2)
+
+  .boom
+    $width: 875px
+    $height: 520px
+    @include absolute($width, $height)
+    @include zoomin_animation_state()
+    top: 45%
+    left: 50%
+    margin: (110px-$height/2) 0 0 (-$width/2)
+
+
+  .cover
+    @include absolute()
+    top: 0
+    left: 0
+
+  .title
+    $width: 115px
+    $height: 111px
+    margin: 20px auto 0 auto
+    height: $height
+    position: relative
+
+    .left, .right
+      position: absolute
+      top: 5px
+      opacity: 0
+      div
+        color: #fff
+        font-size: 42px
+        text-align: center
+        width: 67px
+        height: $height
+        line-height: 83px
+
+    .left
+      left: 0
+      div
+        margin-left: 15px
+
+    .right 
+      right: 0
+      div
+        margin-left: 38px
+
+    .text
+      position: absolute
+      top: 0
+      left: 0
+
+    &.victory 
+      width: 361px
+      .text
+        //width: 366px
+        top: -3px
+        left: -2px
+
+    &.draw 
+      width: 303px
+      .text
+        //width: 306px
+        left: -1px
+        top: -5px
+
+    &.defeat 
+      width: 510px
+      .text
+        //width: 526px
+
+  .layout
+    margin: 20px auto 0 auto
+
+    .cell.buttons
+      @include cell_params(45px, 240px, 385px, 50px)
+      text-align: center
+      button
+        margin: 10px 15px
+
+    .cell.head
+      $height: 25px
+      @include cell_params(150px, 14px, 145px, $height)
+      line-height: $height
+      font-size: 20px
+      text-align: center
+      .extra
+        line-height: $height
+        font-size: 11px
+
+    .cell.dots
+      @include cell_params(35px, 190px, 375px, 21px)
+      text-align: center
+      .dot
+        margin-right: 5px
+
+    .cell.view
+      @include cell_params(35px, 60px, 375px, 120px)
+
+      div
+        font-size: 17px
+        line-height: 21px
+        padding: 0 2px
+      .description
+        width: 270px
+        float: left
+        font-size: 14px
+        color: #555

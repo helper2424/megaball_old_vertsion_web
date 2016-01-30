@@ -1,0 +1,65 @@
+@import "../utils"
+@import "../animations"
+
+.layout.main
+
+  .cell.invite
+    @include cell_params(10px, 7px, 150px, 30px)
+
+  .cell.background
+    @include cell_params(40px, 35px, 331px, 303px)
+    .flow
+      @include absolute()
+      @include rotation_animation_state()
+      background: image-url('without_sprite/flow.png') center center no-repeat
+    .stars
+      @include absolute()
+      @include zoomin_animation_state()
+      background: image-url('without_sprite/stars.png') center center no-repeat
+
+  .cell.picture
+    @include cell_params(148px, 110px, 123px, 123px)
+
+  .cell.username
+    @include cell_params(125px, 45px, 165px, 50px)
+
+  .cell.editor
+    @include cell_params(290px, 71px, 51px, 25px)
+
+  .cell.score
+    @include cell_params(40px, 238px, 330px, 30px)
+    font-size: 21px
+    text-align: center
+    color: rgb(69, 64, 57)
+
+  .cell.play
+    @include cell_params(443px, 90px, 251px, 55px)
+    text-align: center
+
+  .cell.filters
+    @include cell_params(550px, 151px, 150px, 80px)
+    .match-type
+      margin-bottom: 17px
+
+  .cell.groups
+    $height: 98px
+    @include cell_params(415px, 248px, 310px, $height)
+    .group-members
+      height: $height
+      .group-user
+        padding: 5px
+        .kick
+          float: right
+    .create-group
+      margin: 30px 65px 0 60px
+
+  .cell.skills
+    @include cell_params(133px, 273px, 156px, 69px)
+    overflow: hidden
+    text-align: center
+
+    img
+      width: 41px
+      height: 41px
+    .icon
+      margin-right: 8px

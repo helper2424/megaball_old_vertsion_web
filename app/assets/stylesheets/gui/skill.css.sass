@@ -1,0 +1,23 @@
+@import "../utils"
+
+.skill
+  float: left
+  position: relative
+
+  .charge
+    @include absolute(30px, 1em)
+    top: auto
+    left: auto
+    bottom: 12px
+    right: 1px
+    font-size: 15px
+    color: #fff
+    text-align: center
+    
+  .texture
+    @include absolute()
+    top: -5px
+    left: -3px
+    background:
+      position: center center
+      repeat: no-repeat

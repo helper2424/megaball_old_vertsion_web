@@ -1,0 +1,65 @@
+@import "../utils"
+
+.icon
+  border: none
+  outline: none
+  background-color: transparent
+  display: inline-block
+  @include debug_bg(#f55)
+
+  &.price-coin-icon
+    padding-left: 20px
+    font: 8px verdana
+    color: #333
+    text-align: center
+
+  &.price-star-icon
+    @extend .price-coin-icon
+
+  &.price-star-big-icon
+    padding-left: 30px
+    line-height: 24px
+    font: 12px megaball
+    color: #333
+    text-align: center
+
+  &.price-coin-huge-icon
+    padding-left: 40px
+    font: 20px megaball
+    color: #fff
+
+  &.points-huge-icon
+    padding-left: 23px
+    font: 20px megaball
+    color: #fff
+
+  &.price-star-huge-icon
+    padding-left: 23px
+    font: 20px megaball
+    color: #fff
+
+  &.lightning-huge-icon
+    padding-left: 23px
+    font: 20px megaball
+    color: #fff
+
+  &.price-coin-big-icon
+    @extend .price-star-big-icon
+
+$space: 10px
+
+@mixin top_background($offset)
+  background: image-url('icons/top_icons.png') -($offset * 10px + ($offset - 1) * $top_icon_width) -10px
+
+.action-wrap:hover
+  .r3-top-icon
+    background-position: -63px (-61px * 1 - 10px)
+    &.dollar
+      background-position: -10px (-61px * 1 - 10px)
+
+.action-wrap:active
+  .r3-top-icon
+    background-position: -63px (-61px * 2 - 10px)
+    &.dollar
+      background-position: -10px (-61px * 2 - 10px)
+

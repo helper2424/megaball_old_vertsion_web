@@ -1,0 +1,11 @@
+!!!5
+%html
+  %head
+    %title Мегабол: Футбол Онлайн
+    %meta(name="title" content="Мегабол: Футбол Онлайн")
+    %meta(name="description" content="Лучший футбол онлайн")
+    = stylesheet_link_tag "game" 
+    - if @iframe
+      = stylesheet_link_tag "iframe" 
+  %body
+    = yield

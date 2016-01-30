@@ -1,0 +1,30 @@
+@import "../utils"
+@import "../animations"
+
+.hint
+  $height: 8px
+  position: absolute
+  padding: 5px
+  background: image-url('without_sprite/white80_cover.png')
+  max-width: 200px
+  z-index: 99
+  text-align: center
+  @include appear_animation_state()
+
+  &:after
+    @include absolute(100%, $height)
+    left: 50%
+    margin-left: -7px
+    background: center center no-repeat
+    content: ' '
+
+  &.up 
+    margin-top: $height
+    &:after
+      top: -$height
+
+  &.down 
+    margin-bottom: $height
+    &:after
+      bottom: -$height
+

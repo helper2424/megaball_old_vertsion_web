@@ -1,0 +1,262 @@
+@import "../utils"
+
+.club
+  position: relative
+  
+  .tabs
+    position: relative
+    width: 320px
+    height: 35px
+    top: 20px
+    left: -10px
+    margin: 0 auto
+    overflow: hidden
+    text-align: center
+
+  .logo
+    display: inline-block
+
+  .noclublogo.button
+    margin: -3px 0 0 -3px
+
+  .picture
+    width: 86px
+    height: 91px
+    position: relative
+
+    img, .loader
+      @include absolute(77px, 77px)
+      top: 9px
+      left: 3px
+    .glass
+      position: absolute
+      margin: -10px 0 0 -8px
+      cursor: pointer
+
+  .not-clickable .picture .glass
+    cursor: default
+
+  .small .picture
+    width: 51px
+    height: 53px
+    img
+      width: 42px
+      height: 42px
+      top: 8px
+      left: 4px
+    .glass
+      margin: -3px 0 0 -3px
+
+#club_block.home .club
+  .name-edit, .short-name-edit, .status-edit
+    width: 50px
+
+  .cell.people
+    @include cell_params(405px, 265px, 330px, 20px)
+    text-align: right
+    font-size: 19px
+    margin-top: 1px
+
+  .cell.users
+    @include cell_params(405px, 70px, 330px, 195px)
+
+    li span:hover
+      cursor: pointer
+      text-decoration: underline
+
+    .namecol
+      max-width: 150px
+      overflow: hidden
+
+  .cell.status-message
+    @include cell_params(45px, 233px, 295px, 55px)
+    overflow: hidden
+    padding-right: 25px
+    .status 
+      cursor: pointer
+      &.inactive
+        cursor: default
+
+    .edit, .accept, .cancel
+      position: absolute
+      top: 0
+      right: 0
+    .cancel
+      top: 25px
+
+    textarea
+      width: 292px
+      height: 50px
+
+  .cell.buttons
+    @include cell_params(75px, 310px, 640px, 40px)
+    text-align: justify
+    -ms-text-justify: distribute-all-lines
+    text-justify: distribute-all-lines
+
+    &:after
+      content: ' '
+      display: inline-block
+      width: 100%
+      font-size: 0
+      line-height: 0
+      height: 0
+
+    & > .button.gray
+      display: inline-block
+      *display: 1
+      zoom: 1
+
+  .cell.info
+    @include cell_params(40px, 70px, 330px, 145px)
+    font-size: 15px
+    line-height: 27px
+
+    .right-wrapper
+      float: right
+      width: 40px
+      height: 100%
+
+    .logo-wrapper
+      float: left
+      text-align: center
+      height: 100%
+      margin-right: 20px
+      > *
+        margin: 10px 0 10px 8px
+
+    .names-wrapper
+      margin-left: 10px
+      font-size: 20px 
+      max-width: 235px
+      white-space: nowrap
+      overflow: hidden
+      display: inline-block
+
+    .short-name, .short-name-edit
+      cursor: pointer
+      font-size: 20px 
+      text-align: center
+      &.inactive
+        cursor: default
+    .short-name-edit
+      cursor: auto
+
+    .name, .name-edit
+      line-height: 29px
+      height: 29px
+      font-size: 20px
+      cursor: pointer
+      display: inline-block
+      &.inactive
+        cursor: default
+    .name-edit
+      width: 125px
+      display: none
+      cursor: auto
+
+    .edit
+      vertical-align: top
+      margin-top: 0
+
+    .red-cancel, .edit, .accept, .cancel
+      float: right
+      margin-left: 5px
+
+    .label-block
+      display: inline-block
+      margin-right: 10px
+      width: 60px
+
+.club-user-info
+  .name
+    overflow: hidden
+    white-space: nowrap
+    max-width: 145px
+    display: inline-block
+    font-size: 22px
+    z-index: 10
+    position: relative
+
+  .name a:link, .name a:visited
+    cursor: auto
+    text-decoration: underline
+    color: #07A
+
+  .wrapper
+    padding: 0 0 5px 0
+
+  .userpic
+    position: relative
+    top: 0
+    left: 0
+    margin: -20px 0 0 -20px
+
+  h1 
+    text-align: left !important
+    white-space: nowrap
+    overflow: hidden
+
+  .make-manager
+    margin: 0 10px 0 15px
+    font-size: 17px
+
+.club-request-list
+  height: 200px
+
+  li
+    min-height: 20px
+    line-height: 20px
+    .icon
+      float: left
+
+    .do-show-info
+      cursor: pointer
+
+.club-chat
+  margin: 100px auto 0 auto
+  position: relative
+
+  .club-chat-send
+    position: absolute
+    bottom: 9px
+    right: 10px
+
+  .close
+    position: absolute
+    top: -20px
+    right: -25px
+
+  .club-chat-input
+    background: none
+    border: none
+    outline: none
+    position: absolute
+    bottom: 12px
+    left: 15px
+    width: 200px
+    height: 37px
+    line-height: 35px
+    font-size: 16px
+
+  .chat-log
+    position: absolute
+    bottom: 70px
+    left: 15px
+    height: 240px
+    width: 320px
+
+    .chat-message
+      margin-bottom: 5px
+      padding: 3px
+
+      .message
+        font: 13px arial
+
+      &.me .sender
+        color: #579
+      &.system .sender
+        color: #975
+      .sender
+        font-size: 11px
+        color: #777

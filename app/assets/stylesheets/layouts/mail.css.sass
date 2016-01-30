@@ -1,0 +1,47 @@
+@import "../utils"
+
+.mail
+  margin: 160px auto 0 auto
+  position: relative
+
+  .cell.corner
+    @include cell_params(auto, 20px, 50px, 50px)
+    right: -20px
+
+  .cell.list
+    @include cell_params(25px, 55px, 345px, 185px)
+
+    .next-holder
+      text-align: center
+      padding: 1px
+
+    .letter
+      margin-bottom: 5px
+      min-height: 38px
+      display: table
+
+      &:nth-child(even)
+        background: image-url('without_sprite/white_cover.png')
+
+      .left-pane
+        display: table-cell
+        float: left
+        width: 50px
+        height: 100%
+        text-align: center
+
+        button
+          margin-top: 10px
+
+      .content
+        width: 100%
+        display: table-cell
+        vertical-align: middle
+
+        a
+          color: #159
+          cursor: pointer
+
+        .date
+          font: 9px verdana
+          color: #555

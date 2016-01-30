@@ -1,0 +1,89 @@
+@import "../utils"
+
+.ratings
+  margin: 70px auto 0 auto
+  position: relative
+
+  .cell.corner
+    @include cell_params(auto, 20px, 50px, 50px)
+    right: -20px
+
+  .cell.userpic
+    @include cell_params(-30px, -25px, 123px, 123px)
+
+  .cell.info
+    @include cell_params(90px, 55px, 265px, 50px)
+    color: #6c6966
+    text-shadow: 0px -1px 0px #434339
+    text-align: center
+
+    .name
+      font-size: 20px
+      line-height: 21px
+
+    .kv
+      float: left
+      width: 50%
+      line-height: 30px
+
+      .key
+        font-size: 16px
+        float: left
+ 
+      .value
+        text-shadow: 0px -2px 0 #6c6966
+        font-size: 28px
+        color: #fff
+
+  .cell.tabs
+    @include cell_params(25px, 111px, 400px, 38px)
+    .tab
+      width: 52px
+      font-size: 16px
+
+  .cell.data
+    @include cell_params(23px, 160px, 392px, 256px)
+    overflow: hidden
+
+    .err
+      padding: 10px
+      text-align: center
+      font-size: 20px
+
+    .item
+      font: 11px verdana
+      line-height: 17px
+      position: relative
+
+      &:nth-child(even)
+        background: image-url('without_sprite/white_cover.png')
+
+      &.me
+        font-weight: bold
+
+      .place
+        float: left
+        width: 30px
+        text-align: center
+
+      .name
+        float: left
+        width: 200px
+        overflow: hidden
+        white-space: nowrap
+
+      .params
+        position: absolute
+        top: 0
+        right: 0
+
+      a
+        cursor: pointer
+        text-decoration: none
+        color: #07A
+        border-bottom: 1px dotted #07A
+        padding: 0 3px
+        border-radius: 5px
+
+        &:hover
+          background: image-url('without_sprite/white_cover.png')

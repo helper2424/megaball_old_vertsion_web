@@ -1,0 +1,166 @@
+@import "../utils"
+
+.layout.profile
+  width: 781px
+  margin-left: -5px
+
+  .avatar
+    position: absolute
+    top: 220px
+    left: 330px
+
+  .cell.clothes
+    @include cell_params(43px, 43px, 204px, 205px)
+
+    .cloth
+      $height: 58px
+      float: left
+      width: 58px
+      height: $height
+      line-height: $height
+      text-align: center
+      margin: 5px
+      position: relative
+      @include debug_bg(#fff)
+
+      &.active
+        background: image-url('without_sprite/white_cover.png')
+
+      & > div
+        margin: -2px 0 0 -2px
+
+      .skill-frame
+        div
+          width: 100%
+          height: 100%
+
+      .charge
+        font-size: 11px
+        line-height: 11px
+        float: left
+        position: absolute
+        bottom: 3px
+        right: 2px
+        padding: 3px
+        background: rgb(89, 84, 80)
+        color: #fff
+
+      input
+        position: absolute
+        top: 0
+        left: 0
+
+      img
+        vertical-align: middle
+        max-width: 100%
+        max-height: 100%
+        cursor: pointer
+        margin: 0 1px
+
+  .stars
+    width: auto
+    height: 100%
+
+    .first
+      @include cell_params(0, 0, 50%, 100%)
+    .second
+      @include cell_params(0, 0, 50%, 100%)
+    .third
+      @include cell_params(0, 0, 50%, 100%)
+    .fourth
+      @include cell_params(0, 0, 50%, 100%)
+    .button
+      position: absolute
+      top: 3px
+      right: -20px
+
+  .cell.picture
+    @include cell_params(329px, 85px, 123px, 123px)
+
+  .cell.left-buttons
+    @include cell_params(293px, 85px, 37px, 123px)
+    .button
+      margin-bottom: 10px
+
+  .cell.right-buttons
+    @include cell_params(450px, 85px, 37px, 123px)
+    .button
+      margin-bottom: 10px
+
+  .cell.username
+    @include cell_params(308px, 28px, 165px, 50px)
+
+  .cell.to-avatar
+    @include cell_params(320px, 220px, 165px, 50px)
+
+  .cell.points
+    @include cell_params(558px, 46px, 154px, 21px)
+    color: rgb(71, 66, 58)
+    text-align: center
+    line-height: 21px
+    .avail
+      font-size: 1.2em
+
+  .cell.rate-points
+    @include cell_params(-20px, 2px, 25px, 20px)
+    color: rgb(71, 66, 58)
+    text-align: center
+    line-height: 21px
+    .avail
+      font-size: 1.2em
+
+  .cell.reset-points
+    @include cell_params(525px, 25px, 40px, 40px)
+
+  .cell.buy-points
+    @include cell_params(700px, 25px, 40px, 40px)
+
+  .cell.kick
+    @include cell_params(548px, 105px, 170px, 23px)
+
+  .cell.speed
+    @include cell_params(548px, 168px, 170px, 23px)
+
+  .cell.radius
+    @include cell_params(548px, 231px, 170px, 23px)
+
+  .cell.equipment
+    @include cell_params(46px, 285px, 715px, 67px)
+
+    .item
+      float: left
+      width: 67px
+      height: 61px
+      line-height: 61px
+      margin-right: 22px
+      text-align: center
+      border-radius: 5px
+      cursor: pointer
+      position: relative
+      @include debug_bg(#fff)
+
+      &:hover
+        background: image-url('without_sprite/white_cover.png') center center
+
+      img
+        vertical-align: middle
+        max-width: 100%
+        max-height: 100%
+
+      .charge
+        font-size: 12px
+        line-height: 12px
+        float: left
+        position: absolute
+        bottom: 0
+        right: 0
+        padding: 3px
+        border-radius: 5px
+        background: image-url('without_sprite/white_cover.png') center center
+      
+
+  .cell.left
+    @include cell_params(3px, 297px, 34px, 32px)
+
+  .cell.right
+    @include cell_params(742px, 296px, 34px, 32px)

@@ -1,0 +1,138 @@
+@import "../animations"
+@import "../utils"
+
+button
+  &, &:before, &:after
+    overflow: visible
+
+.button
+  border: none
+  outline: none
+  background-color: transparent
+  @include debug_bg(#0ff)
+
+  &, *
+    cursor: pointer
+
+  &.inactive 
+    &, *
+      cursor: default
+
+  &.play-button
+    @include shake_animation_state()
+
+  &.disabled
+    @include crossbrowser("animation", none)
+    cursor: default
+
+  &.cancel
+    @include auto_opacity()
+  
+  &.accept
+    @include auto_opacity()
+  
+  &.append
+    @include auto_opacity()
+  
+  &.edit
+    @include auto_opacity()
+
+  &.small-plus
+    @include auto_opacity()
+
+  &.picker
+    color: #fff
+    font: 20px megaball
+
+  &.any, &.profile, &.ok
+    margin: -5px 0 0 -10px
+
+  &.online
+    font: 12px megaball
+    color: #333
+
+  &.play
+    @include shake_animation_state()
+    &.inactive
+      @include animation("name", none)
+
+  &.gray, &.redsub
+    $offset_top: 2px
+    $offset_left: 9px
+    width: auto !important
+    line-height: 30px !important
+    position: relative
+    padding-left: 24px
+    margin: $offset_top 11px 0 $offset_left
+    color: #FFF
+    text-align: center
+    font: 20px megaball
+    white-space: nowrap
+
+    &.inactive
+      color: #aaa
+
+    .button
+      position: absolute
+      top: -$offset_top
+      left: -$offset_left - 5px
+      // Hate myself for that
+
+    .label
+      height: 15px
+      background-repeat: no-repeat
+      margin-left: -4px
+
+    &:after
+      position: absolute
+      top: 0
+      right: -11px
+      content: ' '
+
+  &.friend-action
+    $left_width: 5px
+    $right_width: 5px
+    width: auto !important
+    margin: 0 $right_width 1px $left_width
+    text-align: center
+    line-height: 34px
+    position: relative
+
+    &:hover, &:active
+      color: #fff
+
+    &.inactive
+      color: #CCC
+
+    &:before
+      position: absolute
+      top: 0
+      left: -$left_width
+      content: ' '
+
+    &:after
+      position: absolute
+      top: 0
+      right: -$right_width
+      content: ' '
+
+.more
+  background: transparent
+  border: 1px dotted #5C6F28
+  color: #5C6F28
+  padding: 5px
+  font: 11px megaball
+  border-radius: 5px
+  cursor: pointer
+  &:hover
+    background: image-url('without_sprite/white_cover.png')
+
+// Dirty hack
+.small .button.noclublogo
+  $width: 51px
+  $height: 53px
+  @include params($width, $height, $TYPE_BUTTON, 'noclublogo_small.png')
+  &:hover
+    @include bg_state($STATE_HOVER, $height)
+  &.inactive
+    @include bg_state(0, $height)

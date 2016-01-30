@@ -1,0 +1,62 @@
+@import "../utils"
+
+.stats
+  $height: 70px
+  height: $height
+  color: rgb(88, 86, 83)
+  text-align: center
+
+  .stat-block
+    float: left
+    text-align: center
+
+    .label
+      vertical-align: top
+      display: inline-block
+      margin-top: 15px
+
+    .progress-bar
+      margin-top: 10px
+      .mul 
+        font: 8px verdana bold
+
+    .currency
+      margin:
+        top: 15px
+
+    .votes
+      margin:
+        top: 20px
+
+    &.text
+      $padding: 4px
+      line-height: $height - $padding
+      padding: $padding 0 0 0
+      font-weight: bold
+      font-size: 23px
+      max-width: 47px
+
+    &.right
+      float: right
+      text-align: right
+      margin:
+        left: 4px
+
+    &.space
+      width: 25px
+
+    &.with-offset
+      margin-right: 2px
+
+    &.currency-wrapper
+      position: relative
+
+    .shine
+      position: absolute
+      width: 21px
+      height: 21px
+      background: image-url('backgrounds/shine.png') center center
+      @include animation("name", rotation)
+      @include animation("duration", 2s)
+      @include animation("iteration-count", infinite)
+      @include animation("timing-functions", linear)

@@ -1,0 +1,137 @@
+ru:
+  unity_not_installed: 'Не установлен Unity Player!'
+  download: 'скачать'
+
+  hello: "Привет мир!"
+  incorrect_invite: "Некорректный инвайт"
+  incorrect_signature: "Несовпадение вычисленной и переданной подписи запроса"
+  incorrect_chargeable: "Передано непонятно что вместо chargeable"
+  undefined_product: 'Товара не существует'
+  download: скачать
+  help_me_install_unity: Мне нужна помощь!
+  in_group: В группу
+  doesnot_work: Не работает
+  payment_description_coins: 'За монеты можно покупать одежду, лица, скиллы и прокачивать свой клуб'
+  payment_description_stars: 'За звезды можно покупать одежду, лица, скиллы и прокачивать свой клуб'
+
+  help_friend: "Твой друг просит энергии! Зайди в игру, чтобы помочь."
+
+  zero_charged: "Невозможно использовать предмет без зарядов"
+
+  uploading: "Загрузка"
+  click_to_select_file: "Нажмите, чтобы выбрать файл:"
+  upload_file: "ЗАГРУЗКА ФАЙЛА"
+  select_file: "ВЫБРАТЬ ФАЙЛ"
+  upload_button: "ЗАГРУЗИТЬ"
+  cancel_button: "ОТМЕНА"
+
+  unity_instruction: "unity_instruction_ru.png"
+
+  club_already_exists: "Клуб с таким названием уже существует"
+
+  coin:
+    zero: "монет"
+    one: "монета"
+    few: "монеты"
+    other: "монет"
+
+  star:
+    zero: "звезд"
+    one: "звезда"
+    few: "звезды"
+    other: "звезд"
+
+  star_accusative:
+    zero: "звезд"
+    one: "звезду"
+    few: "звезды"
+    other: "звезд"
+
+  coin_accusative:
+    zero: "монет"
+    one: "монету"
+    few: "монеты"
+    other: "монет"
+
+  vote:
+    zero: "голосов"
+    one: "голос"
+    few: "голоса"
+    other: "голосов"
+
+  ruble:
+    zero: "рублей"
+    one: "рубль"
+    few: "рубля"
+    other: "рублей"
+
+  mailik:
+    zero: "мэйликов"
+    one: "мэйлик"
+    few: "мэйлика"
+    other: "мэйликов"
+
+  ok:
+    zero: "оков"
+    one: "ок"
+    few: "ока"
+    other: "оков"
+
+  dollar:
+    zero: "долларов"
+    one: "доллар"
+    few: "доллара"
+    other: "долларов"
+
+  incorrect_status: 'Передано непонятно что вместо chargeable'
+
+  store:
+    incorrect_currency: 'Товар нельзя покупать за выбранную вами валюту'
+    already_buy: 'У вас уже есть этот товар'
+    incorrect_level: 'На вашем уровне нельзя покупать этот товар'
+
+  activemodel:
+    errors:
+      messages:
+        taken: уже занят
+
+
+
+  mongoid:
+    errors:
+      messages:
+        document_not_found:
+          Документ класса %{klass} с id %{identifiers} не найден.
+        invalid_database:
+          База данных должная быть Mongo::DB, а не %{name}.
+        invalid_type:
+          Поле уже было определено в классе %{klass}, но получено как %{other}
+          со значением %{value}.
+        unsupported_version:
+          Версия MongoDB %{version} не поддерживается. Пожалуйста, обновитесь до
+          версии %{mongo_version}.
+        validations:
+          Документ не прошёл валидацию - %{errors}.
+        invalid_collection:
+          Доступ к коллекции для класса %{klass} запрещён, так как это вложенный
+          документ. Пожалуйста, обратитесь к коллекции через родительский документ.
+        invalid_field:
+          Определение поля с именем %{name} запрещено. Не определяйте поля
+          с именами совпадающими с внутренними атрибутами или методами Mongoid.
+          Используйте Document#instance_methods для просмотра запрещённых имён.
+        too_many_nested_attribute_records:
+          Accepting nested attributes для %{association} ограничено
+          %{limit} записями.
+        embedded_in_must_have_inverse_of:
+          Указание опции inverse_of для embedded_in ассоциации обязательно.
+        dependent_only_references_one_or_many:
+          Опция dependent => destroy|delete доступная только для
+          references_one или references_many ассоциаций.
+        association_cant_have_inverse_of:
+          Опция inverse_of не может использоваться с этой ассоциацией.
+          Используйте её с embedded_in или references_many ассоциациями.
+        calling_document_find_with_nil_is_invalid:
+          Вызов Document#find с nil запрещён
+        unsaved_document:
+          Вызов методов create или create! запрещён у реляционной ассоциации
+          (%{document}), у которой родитель (%{base}) не сохранён.

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Megaball: Log</title>
+        <%= stylesheet_link_tag "logs/main", :media => "all" %>
+        <script type="text/javascript">
+            (function() {
+                window.log_path = '<%= yield %>';
+                window.lines_count = <%= get_positive_int_param 'lines', 20 %>;
+            })();
+        </script>
+        <%= javascript_include_tag "jquery" %>
+        <%= javascript_include_tag "logs/main" %>
+    </head>
+    <body>
+        <div class="log" id="server_log">
+        </div>
+
+        <form>
+            <div class="menu">
+              <%= link_with_highlight "Game server", 'game_server' %>
+              <%= link_with_highlight "Policy server", 'policy' %>
+              <%= link_with_highlight "Event server", 'event' %>
+              <%= link_with_highlight "Web server", 'web_server' %>
+              <%= link_with_highlight "Chat server", 'chat_server' %>
+              <%= link_with_highlight "Users", 'users' %>
+                |
+                Show last <input type="text" name="lines" id="count" value="<%= get_positive_int_param 'lines', 20 %>" /> lines
+                <input type="submit" value="Submit" />
+                |
+                Auto scroll <input type="checkbox" id="auto_scroll" checked="checked" />
+            </div>
+        </form>
+    </body>
+</html>

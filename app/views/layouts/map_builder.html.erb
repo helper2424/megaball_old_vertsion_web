@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>MapBuilder</title>
+  <meta name="description" content="" />
+
+  <%= javascript_include_tag "swfobject" %>
+  <script>
+    var flashvars = {
+    };
+    var params = {
+      menu: "false",
+      scale: "noScale",
+      allowFullscreen: "true",
+      allowScriptAccess: "always",
+      bgcolor: "",
+      wmode: "direct" // can cause issues with FP settings & webcam
+    };
+    var attributes = {
+      id:"MapBuilder"
+    };
+    swfobject.embedSWF(
+      "MapBuilder.swf", 
+      "altContent", "100%", "100%", "10.0.0", 
+      "expressInstall.swf", 
+      flashvars, params, attributes);
+
+    window.maps = [];
+
+    <% Map.each do |map| %>
+      window.maps.push(<%= map._id %>); 
+    <% end %>
+
+    window.SaveMap = function(data){
+      $.ajax({url:'<%= mb_save_path %>',
+                type:'POST',
+                data:{map:data},
+                success: function(data, status, jqXHR){
+                  console.log(data);
+                },
+                error: function(jqXHR, status, errorThrown){
+                  alert("Some error, status: " + status + " , error: " + errorThrown)
+                }});
+    }
+  </script>
+  <style>
+    html, body { height:100%; overflow:hidden; }
+    body { margin:0; }
+  </style>
+</head>
+<body>
+  <div id="altContent">
+    <h1>MapBuilder</h1>
+    <p><a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash player</a></p>
+  </div>
+</body>
+</html>

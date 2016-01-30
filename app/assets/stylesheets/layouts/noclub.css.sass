@@ -1,0 +1,24 @@
+@import "../utils"
+
+#club_block.noclub .club
+  font-size: 18px
+  position: relative
+
+  $width: 320px
+  $height: 130px
+
+  .table-cell
+    width: $width
+    height: $height
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+
+  .cell.create-club
+    @include cell_params(45px, 215px, $width, $height)
+
+    button
+      vertical-align: middle
+
+  .cell.find-club
+    @include cell_params(405px, 215px, $width, $height)

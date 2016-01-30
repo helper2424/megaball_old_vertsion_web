@@ -1,0 +1,48 @@
+@import "../utils"
+
+#new_achievement_block .flow
+  background: image-url('without_sprite/flow_large.png') center 80% no-repeat
+  min-height: 100%
+  padding-top: 90px
+
+.layout.new-achievement
+  width: 411px
+  height: 381px
+  margin: 0 auto
+
+  .cell.corner
+    @include cell_params(auto, 130px, 50px, 50px)
+    right: -20px
+
+  .cell.buttons
+    @include cell_params(70px, 325px, 320px, 40px)
+    text-align: center
+
+    .button
+      margin-right: 50px
+
+  .cell.ach
+    $height: 100px
+    @include cell_params(30px, 190px, 155px, $height)
+    background: image-url('without_sprite/flow_small.png') center center no-repeat
+    line-height: $height
+    text-align: center
+
+    img
+      max-width: 100%
+      max-height: 100%
+
+
+  .cell.title
+    @include cell_params(55px, 100px, 300px, 60px)
+    text-align: center
+    font-size: 25px
+    line-height: 30px
+    color: #333
+
+    & > span
+      font-size: 34px
+
+  .cell.prise
+    @include cell_params(225px, 230px, 155px, 60px)
+    text-align: center

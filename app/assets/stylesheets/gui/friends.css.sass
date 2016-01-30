@@ -1,0 +1,89 @@
+@import "../utils"
+
+.friends
+  $offset: 8px
+  $arrow_width: 40px
+  margin: 20px $arrow_width+$offset
+  height: 155px
+  position: relative
+
+  .left, .right
+    @include absolute($arrow_width)
+    top: 0
+
+  .left
+    left: -$arrow_width+$offset
+  .right
+    right: -$arrow_width+$offset
+
+  input
+    margin-top: 7px
+
+  #friends_body_wrap
+    overflow: hidden
+    margin: 0 $offset
+    height: 100%
+    display: block
+
+    #friends_body
+      width: 300%
+      height: 100%
+      left: -100%
+      position: relative
+
+      .friends_page
+        height: 100%
+        width: 33.3%
+        left: 33.3%
+        float: left
+        position: relative
+
+  .friend
+    position: relative
+    width: 97px
+    height: 103px
+    margin-left: 33px
+    float: left
+    cursor: pointer
+
+    .do-get-energy
+      position: absolute
+      top: 100%
+      left: -10px
+      margin-top: 15px
+      font-size: 16px
+
+    .glass
+      @include absolute()
+      top: 0
+      left: 0
+
+    .bg, .cover
+      position: absolute
+      top: 17%
+      left: 10%
+
+    .picture
+      position: absolute
+      top: 75%
+      right: -10px
+      cursor: default
+      margin-top: 0
+
+    .online
+      position: absolute
+      top: 80%
+      left: -10px
+      cursor: default
+      margin-top: 0
+
+    .cover
+      display: none
+    &:hover .cover
+      display: block
+
+    .menu
+      @include absolute(110%, 100%)
+      margin: -200% 0 0 -5%
+
+

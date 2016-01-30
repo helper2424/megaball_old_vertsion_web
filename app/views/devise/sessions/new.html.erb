@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag "signin", :media => "all" %>
+
+<div class="signin-wrap">
+
+  <div class="marking"></div>
+
+  <div class="star star-position-1 star-1"></div>
+  <div class="star star-position-2 star-2"></div>
+  <div class="star star-position-3 star-3"></div>
+  <div class="star star-position-4 star-4"></div>
+  <div class="star star-position-5 star-4"></div>
+  <div class="star star-position-6 star-4"></div>
+  <div class="star star-position-7 star-5"></div>
+  <div class="star star-position-8 star-5"></div>
+  <div class="star star-position-9 star-6"></div>
+  <div class="star star-position-10 star-7"></div>
+  <div class="star star-position-11 star-8"></div>
+
+  <div class="rays"></div>
+
+  <div class="signin-mega"></div>
+
+  <div class="signin-ball"></div>
+
+  <div class="signin-fly-ball"></div>
+
+  <div class="signin-fly-man"></div>
+
+  <div class="signin-oauth">
+    <div class="oauth-providers-wrap">
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to "", omniauth_authorize_path(resource_name, provider), class: "oauth-link oauth-providers provider-#{provider.to_s}" %>  <% end -%>
+      <% end -%>
+    </div>
+  </div>
+</div>

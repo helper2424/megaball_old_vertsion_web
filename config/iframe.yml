@@ -1,0 +1,64 @@
+defaults: &defaults
+  vk:
+    id: '3991734'
+    secret_key: ''
+  fb:
+    id: '256433491167297'
+    secret_key: ''
+  ok:
+    id: '207228672'
+    secret_key: ''
+  mailru:
+    id: '711991'
+    secret_key: ''
+    private_key: ''
+
+development:
+  <<: *defaults
+  vk:
+    id: '3805713'
+    secret_key: ''
+  mailru:
+    id: '714259'
+    secret_key: ''
+    private_key: ''   
+
+test:
+  <<: *defaults
+
+production: &production
+  vk:
+    #id: '4275692'
+    #secret_key: 'XhkFuUKe5nsjK9OrcQOQ'
+    id: '3663212'
+    secret_key: ''
+  fb:
+    id: '1422519798009673'
+    secret_key: ''
+  ok:
+    id: '207225344'
+    secret_key: ''
+  mailru:
+    id: '714999'
+    secret_key: ''
+    private_key: ''
+
+release: &release
+  <<: *production
+  vk:
+    id: '4349414'
+    secret_key: ''
+  ok:
+    #id: '1088745728'
+    id: '1094177024'
+    #secret_key: ''
+    secret_key: ''
+  mailru:
+    id: '715002'
+    secret_key: ''
+    private_key: ''
+  fb:
+    #id: '742892422410981'
+    #secret_key: 'eeb12df0be5827b6aab9da54f8848f26'
+    id: ''
+    secret_key: ''

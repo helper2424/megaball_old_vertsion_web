@@ -1,0 +1,35 @@
+@import "../utils"
+
+.name-editor
+  position: relative
+  width: 165px
+  height: 50px
+  
+  .name 
+    @include absolute()
+    overflow: hidden
+    text-align: center
+    color: rgb(71, 66, 58)
+    .text
+      font-size: 20px
+      line-height: 20px
+
+    textarea
+      @include absolute()
+      top: 0
+      left: 0
+      font: 20px megaball
+      background: image-url('without_sprite/white_cover.png')
+      border: none
+      padding: 0
+      margin: 0
+      border-radius: 3px
+      overflow: hidden
+      outline: none
+      text-align: center
+      color: rgb(71, 66, 58)
+
+  .editor
+    @include absolute(0, 0)
+    top: 0
+    left: 100%

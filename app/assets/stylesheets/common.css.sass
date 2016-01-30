@@ -1,0 +1,38 @@
+@import "utils"
+@import "animations"
+
+* 
+  cursor: default
+  @include crossbrowser('user-select', none)
+  -khtml-user-select: none
+
+  .selectable, input[type='text'], input[type='password'], textarea
+    &, *
+      cursor: auto
+      @include crossbrowser('user-select', text)
+      -khtml-user-select: text
+
+body
+  @include absolute()
+  top: 0
+  left: 0
+  margin: 0
+  padding: 0
+  font: 14px megaball
+
+a
+  outline-style: none
+
+.main_wrapper
+  margin: 0 auto
+  padding: 20px
+
+.main_block, .inner_block
+  position: relative
+  overflow: hidden
+
+.inner_block
+  display: none
+
+.inner_block, #footer, #header
+  padding: 0px 10px

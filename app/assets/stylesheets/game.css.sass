@@ -1,0 +1,178 @@
+//= require font
+
+body
+  background: image-url('without_sprite/back_outside_auth.png')
+  font-family: arial
+  color: #444
+
+#vkComments
+  background: white
+
+#clubLogoUploader
+  background: rgb(51, 51, 51)
+  margin: auto
+  position: relative
+
+  .uploadDialog
+    $width: 305px
+    $height: 325px
+    width: $width
+    height: $height
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-left: -($width / 2)
+    margin-top: -($height / 2)
+    background: image-url('without_sprite/simple_popup.png')
+    text-align: center
+    color: #333
+
+    .uploading
+      display: none
+      img
+        width: 50px
+        height: 50px
+
+    form
+      display: none
+
+    h1
+      margin-top: 35px
+      margin-bottom: 70px
+      font-size: 20px
+
+    h3
+      font-weight: normal
+      margin-bottom: 00px
+      margin-left: 10px
+      font-size: 15px
+      max-width: ($width - 30px)
+      max-height: 2em
+      white-space: nowrap
+      overflow: hidden
+
+    .close-button
+      position: absolute
+      top: -15px
+      right: -15px
+      width: 70px
+      height: 77px
+      background: red
+      cursor: pointer
+      border: none
+      background: image-url('without_sprite/brown_close_normal.png')
+      &:hover
+        background: image-url('without_sprite/brown_close_hover.png')
+      &:active
+        background: image-url('without_sprite/brown_close_active.png')
+
+    .select-file
+      margin-bottom: 35px
+      font-size: 15px
+      font-weight: bold
+      background: image-url('without_sprite/green_normal.png') 0px -7px
+      cursor: pointer
+      border: none
+      width: 235px
+      height: 40px
+      color: #fff
+      text-shadow: 0px 1px #132
+      &:hover
+        background-image: image-url('without_sprite/green_hover.png')
+      &:active
+        background-image: image-url('without_sprite/green_active.png')
+
+    .left-button, .right-button
+      cursor: pointer
+      width: 110px
+      height: 31px
+      border: none
+      background: image-url('without_sprite/blue.png')
+      font-size: 15px
+      font-weight: bold
+      color: #fff
+      text-shadow: 0px 1px #123
+      &:hover
+        background-position: 0px -31px
+      &:active
+        background-position: 0px -62px
+
+  &.hidden
+    display: none
+
+#unityWrapper
+  margin: auto
+  background: image-url('layouts/not-frame.png')
+  display: none
+  position: relative
+  
+  &.hidden
+    #unityHider
+      margin-top: -1000px
+
+  .whiteCover
+    width: 100%
+    height: 100%
+    background: image-url('without_sprite/white_cover.png')
+
+  #unityHider, #unityPlayer
+    height: 100%
+
+  .missing
+    display: none
+    width: 100%
+    height: 100%
+    background: white
+
+  $leftPad: 22px
+  $topPad: 47px
+  padding: 22px 47px
+
+#navHelp
+  display: none
+  background: image-url('layouts/navigation-help.png') center center no-repeat
+  background-position: center center
+  background-repeat: no-repeat
+  margin: auto
+  width: 100%
+  height: 170px
+
+#installUnityWindow
+  $width: 400px
+  $height: 210px
+
+  position: absolute
+  top: 50%
+  left: 50%
+  margin: (-$height/2) 0 0 (-$width/2)
+  background: image-url('layouts/install-unity.png')
+  width: $width
+  height: $height
+  text-align: center
+
+  .text
+    margin: 20px 40px 55px 40px
+    font-size: 25px
+
+  a
+    $width: 110px
+    $height: 31px
+
+    color: white
+    display: inline-block
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    -o-box-sizing: border-box
+    box-sizing: border-box
+    width: $width
+    height: $height
+
+    padding: 8px 0 0 0
+
+    //background-image: image-url('without_sprite/download_button.png')
+    background-image: image-url('without_sprite/blue.png')
+
+    &:hover
+      background-position: 0px (-$height)
+    &:active
+      background-position: 0px (-$height*2)

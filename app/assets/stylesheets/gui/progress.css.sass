@@ -1,0 +1,33 @@
+@import "../utils"
+
+.progress-bar
+  position: relative
+
+  line-height: 24px
+  &.small
+    line-height: 16px
+
+  .glass
+    @include absolute()
+
+  .text
+    @include absolute(133px)
+    text-align: center
+    span.big
+      font-size: 1.2em
+    &.empty
+      color: #fff
+    &.full
+      color: #000
+  &.small .text
+    width: 70px
+    font: 10px tahoma
+
+  .flash
+    @include absolute()
+    display: hidden
+
+  .cover
+    @include absolute(0)
+    overflow: hidden
+

@@ -1,0 +1,88 @@
+@import "utils"
+
+// Shake
+
+@mixin shake_animation($selector)
+  $angle: 3deg
+  0%
+    #{$selector}transform: rotate(0deg)
+  2%
+    #{$selector}transform: rotate($angle)
+  4%
+    #{$selector}transform: rotate(0deg)
+  8%
+    #{$selector}transform: rotate(-$angle)
+  10%
+    #{$selector}transform: rotate(0deg)
+  12%
+    #{$selector}transform: rotate($angle)
+  14%
+    #{$selector}transform: rotate(0deg)
+  16%
+    #{$selector}transform: rotate(-$angle)
+  18%
+    #{$selector}transform: rotate(0deg)
+
+@mixin shake_animation_state()
+  @include animation("name", shake)
+  @include animation("duration", 2.5s)
+  @include animation("iteration-count", infinite)
+
+// Rotation
+
+@mixin rotation_animation($selector)
+  0%
+    #{$selector}transform: rotate(0deg)
+  100%
+    #{$selector}transform: rotate(360deg)
+
+@mixin rotation_animation_state()
+  //@include animation("name", rotation)
+  //@include animation("duration", 80s)
+  //@include animation("direction", reverse)
+  //@include animation("iteration-count", infinite)
+  //@include animation("timing-functions", linear)
+
+
+// Zoom Out
+
+@mixin zoomout_animation($selector)
+  0%
+    #{$selector}transform: scale(1, 1)
+  100%
+    #{$selector}transform: scale(0.85, 0.85)
+
+@mixin zoomout_animation_state()
+  @include animation("name", zoomout)
+  @include animation("duration", 0.3s)
+  @include crossbrowser("transform", scale(0.85, 0.85))
+
+// Zoom In
+
+@mixin zoomin_animation($selector)
+  0%
+    #{$selector}transform: scale(0, 0)
+  100%
+    #{$selector}transform: scale(1, 1)
+
+@mixin zoomin_animation_state()
+  @include animation("name", zoomin)
+  @include animation("duration", 0.3s)
+
+// Appear
+
+@mixin appear_animation($selector)
+  0%
+    opacity: 0
+    #{$selector}transform: scale(0.98, 0.98)
+
+  100%
+    opacity: 1
+    #{$selector}transform: scale(1, 1)
+
+@mixin appear_animation_state()
+  @include animation("name", appear)
+  @include animation("duration", 0.2s)
+  @include crossbrowser("perspective", 150)
+  @include crossbrowser("transform-origin", 50% 0%)
+

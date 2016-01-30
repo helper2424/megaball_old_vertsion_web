@@ -1,0 +1,86 @@
+
+$DEBUG: _enabled
+
+$DEFAULT_OFFSET: 0px
+$TEXT_OFFSET: 10px
+
+$STATE_DEFAULT: 1
+$STATE_HOVER: 2
+$STATE_ACTIVE: 3
+$STATE_INACTIVE: 4
+
+$TYPE_BUTTON: 'buttons'
+$TYPE_LABEL: 'label'
+$TYPE_ICON: 'icons'
+
+@mixin debug_bg($color)
+  @if $DEBUG == enabled
+    background-color: $color
+    opacity: 0.8
+
+@mixin cell_params($x, $y, $w, $h)
+  position: absolute
+  left: $x
+  top: $y
+  width: $w
+  height: $h
+
+@mixin absolute($w:100%, $h:100%)
+  position: absolute
+  width: $w
+  height: $h
+
+@mixin bg_image($type, $bg)
+  background-image: image-url('#{$type}/#{$bg}')
+
+@mixin bg_state($state, $height, $selector:'', $o:$DEFAULT_OFFSET, $important:'')
+  &, #{$selector}
+    background-position: -$o (-$state*$o - $height*($state - 1)) #{$important}
+ 
+@mixin bg_all_states($height, $selector:'', $o:$DEFAULT_OFFSET)
+  @include bg_state($STATE_DEFAULT, $height, $selector, $o)
+  &:hover
+    @include bg_state($STATE_HOVER, $height, $selector, $o)
+  &:active
+    @include bg_state($STATE_ACTIVE, $height, $selector, $o)
+  &.inactive
+    @include bg_state($STATE_INACTIVE, $height, $selector, $o)
+  &.disabled
+    &, &:hover, &:active
+      @include bg_state($STATE_INACTIVE, $height, $selector, $o)
+
+@mixin params($w, $h, $type, $bg)
+  width: $w
+  height: $h
+  @include bg_image($type, $bg)
+
+@mixin auto_opacity()
+  opacity: 0.5
+  &:hover
+    opacity: 0.9
+  &:active
+    opacity: 1
+
+@mixin extend_all_states($selector)
+  &:hover    #{$selector}
+    @extend  #{$selector}:hover !optional
+  &:active   #{$selector}
+    @extend  #{$selector}:active !optional
+  &.active   #{$selector}
+    @extend  #{$selector}.active !optional
+  &.inactive #{$selector}
+    @extend  #{$selector}.inactive !optional
+  &.disabled
+    &, &:hover, &:active, &.inactive
+      #{$selector}
+        cursor: default
+        @extend #{$selector}.inactive !optional
+
+@mixin crossbrowser($key, $value)
+  //#{$key}: $value
+  -webkit-#{$key}: $value
+  //-moz-#{$key}: $value
+  //-o-#{$key}: $value
+
+@mixin animation($key, $value)
+  @include crossbrowser("animation-#{$key}", $value)

@@ -1,0 +1,77 @@
+development:
+  sessions:
+    default:
+      database: megaball_development
+      hosts:
+        - localhost:27017
+      username: megaball_development
+      password: ""
+
+    megaball1:
+      database: megaball_development
+      hosts:
+        - localhost:27017
+      username: megaball_development
+      password: ""
+  options:
+    preload_models: false
+    scope_overwrite_exception: true
+    raise_not_found_error: false
+    skip_version_check: false
+    use_activesupport_time_zone: false
+    use_utc: true
+
+production:
+  sessions:
+    default:  
+      database: megaball
+      hosts:
+        - localhost:27017
+      username: megaball_production
+      password: ""
+  options:
+    preload_models: false
+    scope_overwrite_exception: true
+    raise_not_found_error: false
+    skip_version_check: false
+    use_activesupport_time_zone: false
+    use_utc: true
+
+release:
+  sessions:
+    default:  
+      database: megaball2
+      hosts:
+        - localhost:28960
+      username: megaball
+      password: ""
+    megaball1:
+      database: megaball
+      hosts:
+        - localhost:28960
+      username: megaball
+      password: ""
+  options:
+    preload_models: false
+    scope_overwrite_exception: true
+    raise_not_found_error: false
+    skip_version_check: false
+    use_activesupport_time_zone: false
+    use_utc: true
+
+
+test:
+  sessions:
+    default:
+      database: megaball_test
+      hosts:
+        - localhost:27017
+      username: megaball_test
+      password: ""
+      options:
+        #consistency: :strong
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        #max_retries: 1
+        #retry_interval: 0
+
